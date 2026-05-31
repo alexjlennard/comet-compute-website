@@ -33,10 +33,19 @@ export default function Solutions() {
             <Reveal key={solution.slug} delay={i * 100}>
               <Link
                 href={`/solutions/${solution.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#100e0a] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#100e0a] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-amber-400/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <div className="relative flex flex-1 flex-col">
+                <div className="relative h-44 w-full overflow-hidden bg-black">
+                  <Image
+                    src={solution.image}
+                    alt={solution.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#100e0a] via-[#100e0a]/30 to-transparent" />
+                </div>
+                <div className="relative flex flex-1 flex-col p-8 pt-6">
                   <h3 className="text-xl font-semibold group-hover:text-amber-200">{solution.name}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-[#9a9384]">
                     {solution.subhead}

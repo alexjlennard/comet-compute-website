@@ -34,7 +34,7 @@ export const solutions: Solution[] = [
     headline: "Train frontier models on dedicated GPU clusters",
     subhead:
       "Reserve single-tenant multi-node clusters with high-speed interconnects purpose-built for large-scale distributed training. No noisy neighbors, no preemption, no surprises.",
-    image: "/assets/cluster-nvl72.png",
+    image: "/assets/interconnect-fabric.jpg",
     capabilities: [
       {
         title: "Multi-node NVLink fabric",
