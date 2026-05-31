@@ -26,7 +26,7 @@ export default function SolutionsIndex() {
         </div>
         <div className="relative mx-auto max-w-3xl text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-amber-400">Solutions</p>
-          <h1 className="mt-3 text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+          <h1 className="display-lg mt-3 text-balance text-4xl leading-[1.05] sm:text-5xl">
             Infrastructure tailored to your workload
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#b8b1a0]">

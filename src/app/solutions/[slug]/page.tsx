@@ -58,7 +58,7 @@ export default async function SolutionPage({
             <p className="text-sm font-medium uppercase tracking-widest text-amber-400">
               {solution.eyebrow}
             </p>
-            <h1 className="mt-3 text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+            <h1 className="display-lg mt-3 text-balance text-4xl leading-[1.05] sm:text-5xl">
               {solution.headline}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#b8b1a0]">
@@ -102,7 +102,7 @@ export default async function SolutionPage({
         <div className="mx-auto grid max-w-5xl gap-px overflow-hidden rounded-2xl border border-amber-400/10 bg-amber-400/5 sm:grid-cols-3">
           {solution.stats.map((stat) => (
             <div key={stat.label} className="bg-[#0c0a07] p-6 text-center">
-              <div className="gradient-text text-3xl font-bold">{stat.value}</div>
+              <div className="display-lg text-3xl text-amber-400">{stat.value}</div>
               <div className="mt-1 text-sm text-[#9a9384]">{stat.label}</div>
             </div>
           ))}
@@ -113,7 +113,7 @@ export default async function SolutionPage({
       <section className="px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="display-lg text-balance text-3xl sm:text-4xl">
               Built for the way you work
             </h2>
             <p className="mt-4 text-lg text-[#9a9384]">
@@ -172,7 +172,7 @@ export default async function SolutionPage({
       {/* Other solutions */}
       <section className="border-t border-white/5 px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold tracking-tight">Explore other solutions</h2>
+          <h2 className="display-lg text-2xl">Explore other solutions</h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {others.map((s) => (
               <Link

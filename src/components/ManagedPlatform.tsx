@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 
 export default function ManagedPlatform() {
   const features = [
@@ -54,36 +55,33 @@ export default function ManagedPlatform() {
   ];
 
   return (
-    <section id="managed" className="relative py-32 px-6">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute right-1/4 top-1/4 h-[400px] w-[500px] rounded-full bg-amber-500/5 blur-[120px]" />
-      </div>
+    <section id="managed" className="relative px-6 py-28 lg:py-36">
+      <div className="mesh pointer-events-none absolute inset-0 opacity-60" />
 
       <div className="relative mx-auto max-w-7xl">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Copy + features */}
           <div>
-            <Reveal>
-              <p className="text-sm font-medium uppercase tracking-widest text-amber-400">
-                Managed Platform
-              </p>
-              <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-                Plug in and start training on day one
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#9a9384]">
-                Anyone can hand you bare metal. We hand you a running platform. Managed
-                Kubernetes and Slurm, a pre-tuned ML stack, and observability come ready
-                out of the box — so your team ships models instead of wrangling drivers.
-              </p>
-            </Reveal>
+            <SectionHeader
+              index="04"
+              kicker="Managed Platform"
+              title={
+                <>
+                  Plug in and train
+                  <br />
+                  on day one.
+                </>
+              }
+              lede="Anyone can hand you bare metal. We hand you a running platform — managed Kubernetes and Slurm, a pre-tuned ML stack, and observability, all ready before you log in."
+            />
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {features.map((feature, i) => (
                 <Reveal key={feature.title} delay={(i % 2) * 90}>
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-400/10 text-amber-400">
                     {feature.icon}
                   </div>
-                  <h3 className="mt-4 text-base font-semibold">{feature.title}</h3>
+                  <h3 className="font-display mt-4 text-base font-semibold">{feature.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-[#9a9384]">
                     {feature.description}
                   </p>
@@ -94,11 +92,11 @@ export default function ManagedPlatform() {
 
           {/* Stack visual */}
           <Reveal delay={120}>
-            <div className="gradient-border rounded-3xl bg-[#0c0a07] p-6 sm:p-8">
+            <div className="glass rounded-3xl p-6 sm:p-8">
               <div className="mb-5 flex items-center justify-between">
-                <span className="text-sm font-medium text-[#cfc8b8]">The full stack</span>
-                <span className="flex items-center gap-1.5 text-xs text-amber-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                <span className="kicker text-[#9a9384]">The full stack</span>
+                <span className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest text-amber-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse-glow" />
                   Managed by Comet
                 </span>
               </div>

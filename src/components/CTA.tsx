@@ -15,10 +15,17 @@ export default function CTA() {
       <div className="relative mx-auto max-w-5xl">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <h2 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-              Ready to leave the cloud behind?
+            <div className="flex items-center gap-3">
+              <span className="kicker">08</span>
+              <span className="h-px w-8 bg-amber-400/50" />
+              <span className="kicker text-[#9a9384]">Get started</span>
+            </div>
+            <h2 className="display-lg mt-5 text-balance text-4xl sm:text-5xl">
+              Ready to leave the
+              <br />
+              cloud behind?
             </h2>
-            <p className="mt-4 max-w-xl text-lg text-[#9a9384]">
+            <p className="mt-5 max-w-xl text-lg text-[#9a9384]">
               Talk to our team about dedicated GPU infrastructure tailored to your AI
               workloads. We&apos;ll scope your requirements and build the cluster to match.
             </p>
@@ -41,7 +48,7 @@ export default function CTA() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="gradient-border rounded-2xl bg-[#100e0a] p-8">
+            <div className="glass rounded-2xl p-8">
               {submitted ? (
                 <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-400/10 text-amber-400">

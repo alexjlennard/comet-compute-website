@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./Reveal";
-import { solutions, getSolution } from "@/lib/solutions";
+import SectionHeader from "./SectionHeader";
+import { getSolution } from "@/lib/solutions";
 
 export default function Solutions() {
   // Feature three solutions on the homepage; full set lives on /solutions.
@@ -12,21 +13,24 @@ export default function Solutions() {
   const healthcare = getSolution("healthcare");
 
   return (
-    <section id="solutions" className="relative py-32 px-6">
+    <section id="solutions" className="relative py-28 px-6 lg:py-36">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-1/3 h-[500px] w-[500px] translate-x-1/3 rounded-full bg-rose-500/5 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
-        <Reveal className="flex flex-col items-center text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-amber-400">Solutions</p>
-          <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Tailored for your workload
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[#9a9384]">
-            Whether you&apos;re training frontier models or serving millions of inference requests, we build the cluster to match.
-          </p>
-        </Reveal>
+        <SectionHeader
+          index="05"
+          kicker="Solutions"
+          title={
+            <>
+              Tailored to
+              <br />
+              your workload.
+            </>
+          }
+          lede="Training frontier models or serving millions of inference requests — we build the cluster to match."
+        />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
           {featured.map((solution, i) => (
@@ -46,7 +50,7 @@ export default function Solutions() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#100e0a] via-[#100e0a]/30 to-transparent" />
                 </div>
                 <div className="relative flex flex-1 flex-col p-8 pt-6">
-                  <h3 className="text-xl font-semibold group-hover:text-amber-200">{solution.name}</h3>
+                  <h3 className="font-display text-xl font-semibold group-hover:text-amber-200">{solution.name}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-[#9a9384]">
                     {solution.subhead}
                   </p>
@@ -87,7 +91,7 @@ export default function Solutions() {
             </div>
             <div className="p-8 lg:py-12 lg:pr-12">
               <p className="text-sm font-medium uppercase tracking-widest text-rose-400/80">Starting with healthcare</p>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
+              <h3 className="display-lg mt-3 text-2xl sm:text-3xl">
                 Private AI compute for clinical environments
               </h3>
               <p className="mt-4 text-[#9a9384]">

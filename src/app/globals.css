@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060504;
+  --background: #070605;
   --foreground: #f5f3ee;
   --accent: #e8b14c;
   --accent-light: #f5cd7a;
@@ -10,8 +10,12 @@
   --accent-blue: #3b6fe0;
   --surface: #100e0a;
   --surface-light: #1a1712;
-  --border: rgba(232, 177, 76, 0.08);
+  --border: rgba(245, 240, 230, 0.08);
+  --hairline: rgba(245, 240, 230, 0.1);
   --text-muted: #9a9384;
+  /* light / inverted section */
+  --bone: #ede7da;
+  --bone-ink: #14110a;
 }
 
 @theme inline {
@@ -26,8 +30,11 @@
   --color-surface-light: var(--surface-light);
   --color-border: var(--border);
   --color-muted: var(--text-muted);
+  --color-bone: var(--bone);
+  --color-bone-ink: var(--bone-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
 body {
@@ -150,4 +157,100 @@ body {
 .fade-x-mask {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* ---------- Editorial type system ---------- */
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+.display-xl {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.display-lg {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+
+/* Mono kicker label: "01 — INFRASTRUCTURE" */
+.kicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------- Depth & texture ---------- */
+/* Film grain overlay applied site-wide via body::after */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Layered mesh gradient background for atmosphere */
+.mesh {
+  background:
+    radial-gradient(60% 50% at 15% 0%, rgba(232, 177, 76, 0.10), transparent 60%),
+    radial-gradient(50% 50% at 85% 10%, rgba(242, 92, 138, 0.06), transparent 55%),
+    radial-gradient(70% 60% at 50% 100%, rgba(232, 177, 76, 0.05), transparent 65%);
+}
+
+/* Hairline divider with fade */
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--hairline), transparent);
+}
+
+/* Glass panel with real shadow + depth */
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--hairline);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.glass-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, box-shadow 0.4s;
+}
+.glass-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 177, 76, 0.25);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 40px 80px -24px rgba(0, 0, 0, 0.8),
+    0 0 60px -20px rgba(232, 177, 76, 0.25);
+}
+
+/* Fine dotted/grid texture for panels */
+.dot-grid {
+  background-image: radial-gradient(rgba(245, 240, 230, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Thin engraved top border accent on feature cells */
+.edge-top {
+  position: relative;
+}
+.edge-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(232, 177, 76, 0.5), transparent);
 }

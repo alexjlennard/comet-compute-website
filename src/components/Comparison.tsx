@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 
 export default function Comparison() {
   const rows = [
@@ -11,19 +12,16 @@ export default function Comparison() {
   ];
 
   return (
-    <section className="relative py-32 px-6">
-      <div className="relative mx-auto max-w-4xl">
-        <Reveal className="text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-amber-400">Why Comet</p>
-          <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Not another hyperscaler
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[#9a9384]">
-            We built Comet Compute because teams building AI deserve better than fighting for shared resources on legacy cloud platforms.
-          </p>
-        </Reveal>
+    <section className="relative py-28 px-6 lg:py-36">
+      <div className="relative mx-auto max-w-5xl">
+        <SectionHeader
+          index="06"
+          kicker="Why Comet"
+          title="Not another hyperscaler."
+          lede="Teams building AI deserve better than fighting for shared resources on legacy cloud platforms."
+        />
 
-        <Reveal className="mt-16 overflow-hidden rounded-2xl border border-amber-400/10 bg-[#100e0a]">
+        <Reveal className="glass mt-14 overflow-hidden rounded-2xl">
           <div className="grid grid-cols-3 border-b border-white/5 px-6 py-4 text-sm font-medium">
             <div className="text-[#9a9384]">Feature</div>
             <div className="text-center text-amber-400">Comet Compute</div>

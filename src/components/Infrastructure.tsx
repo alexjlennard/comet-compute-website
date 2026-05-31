@@ -1,114 +1,106 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 
 export default function Infrastructure() {
-  const gpus = [
-    {
-      name: "NVIDIA GB300 NVL72",
-      description: "Blackwell Ultra rack-scale system — our flagship for the largest training and inference workloads",
-      specs: { memory: "Up to 21TB", interconnect: "NVLink 5", perf: "1.5× GB200" },
-      badge: "Latest",
-      image: "/assets/cluster-nvl72.png",
-    },
-    {
-      name: "NVIDIA GB200 NVL72",
-      description: "Grace Blackwell rack-scale architecture for the most demanding distributed training",
-      specs: { memory: "Up to 13.5TB", interconnect: "NVLink 5", perf: "1.4 ExaFLOPS" },
-      badge: null,
-      image: "/assets/rack-tall.png",
-    },
-    {
-      name: "NVIDIA HGX B300",
-      description: "Blackwell Ultra 8-GPU systems optimized for large-scale inference and training",
-      specs: { memory: "2.3TB HBM3e", interconnect: "NVLink", perf: "Blackwell Ultra" },
-      badge: "Popular",
-      image: "/assets/server-dgx.png",
-    },
-    {
-      name: "NVIDIA HGX B200",
-      description: "High-performance Blackwell GPUs for large-scale training and inference",
-      specs: { memory: "1.4TB HBM3e", interconnect: "NVLink", perf: "Blackwell" },
-      badge: null,
-      image: "/assets/chip-blackwell.png",
-    },
-    {
-      name: "NVIDIA H200",
-      description: "Proven Hopper architecture with expanded memory for large model inference",
-      specs: { memory: "141GB HBM3e", interconnect: "NVLink", perf: "989 TFLOPS" },
-      badge: null,
-      image: "/assets/server-dgx.png",
-    },
-    {
-      name: "NVIDIA H100",
-      description: "Industry-standard GPU for training and inference at scale",
-      specs: { memory: "80GB HBM3", interconnect: "NVLink", perf: "989 TFLOPS" },
-      badge: null,
-      image: "/assets/chip-blackwell.png",
-    },
+  const featured = {
+    name: "NVIDIA GB300 NVL72",
+    tag: "Flagship · Blackwell Ultra",
+    description:
+      "Our flagship rack-scale system for the largest training and inference workloads. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single, coherent accelerator.",
+    image: "/assets/cluster-nvl72.png",
+    specs: [
+      { k: "GPUs", v: "72 × Blackwell Ultra" },
+      { k: "Memory", v: "Up to 21TB" },
+      { k: "Interconnect", v: "NVLink 5" },
+      { k: "Performance", v: "1.5× GB200" },
+    ],
+  };
+
+  const lineup = [
+    { name: "NVIDIA GB200 NVL72", arch: "Grace Blackwell", memory: "Up to 13.5TB", fabric: "NVLink 5", perf: "1.4 EFLOPS" },
+    { name: "NVIDIA HGX B300", arch: "Blackwell Ultra", memory: "2.3TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
+    { name: "NVIDIA HGX B200", arch: "Blackwell", memory: "1.4TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
+    { name: "NVIDIA H200", arch: "Hopper", memory: "141GB HBM3e", fabric: "NVLink", perf: "989 TFLOPS" },
+    { name: "NVIDIA H100", arch: "Hopper", memory: "80GB HBM3", fabric: "NVLink", perf: "989 TFLOPS" },
   ];
 
   return (
-    <section id="infrastructure" className="relative py-32 px-6">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/3 bottom-0 h-[400px] w-[600px] -translate-y-1/4 rounded-full bg-amber-500/5 blur-[100px]" />
-      </div>
-
+    <section id="infrastructure" className="relative px-6 py-28 lg:py-36">
       <div className="relative mx-auto max-w-7xl">
-        <Reveal className="text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-amber-400">Infrastructure</p>
-          <h2 className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            The latest NVIDIA silicon
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[#9a9384]">
-            Access the most powerful GPU hardware available, deployed in purpose-built facilities with enterprise-grade networking.
-          </p>
+        <SectionHeader
+          index="03"
+          kicker="Infrastructure"
+          title={
+            <>
+              The latest NVIDIA silicon,
+              <br />
+              ready to reserve.
+            </>
+          }
+          lede="From Blackwell Ultra rack-scale systems to proven Hopper nodes — deployed in purpose-built facilities with enterprise networking."
+        />
+
+        {/* Featured flagship */}
+        <Reveal className="glass edge-top mt-14 grid overflow-hidden rounded-3xl lg:grid-cols-2">
+          <div className="relative min-h-[280px] overflow-hidden bg-black">
+            <Image
+              src={featured.image}
+              alt={featured.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0c0a07] lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#0c0a07]" />
+            <span className="absolute left-5 top-5 rounded-full border border-amber-400/30 bg-[#060504]/70 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-amber-300 backdrop-blur-sm">
+              {featured.tag}
+            </span>
+          </div>
+          <div className="flex flex-col justify-center p-8 lg:p-12">
+            <h3 className="display-lg text-3xl sm:text-4xl">{featured.name}</h3>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#9a9384]">
+              {featured.description}
+            </p>
+            <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5">
+              {featured.specs.map((s) => (
+                <div key={s.k} className="border-t border-white/10 pt-3">
+                  <dt className="kicker text-[#7a7464]">{s.k}</dt>
+                  <dd className="mt-1.5 font-mono text-sm text-amber-100">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {gpus.map((gpu, i) => (
-            <Reveal
-              key={gpu.name}
-              delay={(i % 2) * 100}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#100e0a] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20"
+        {/* Spec table for the rest of the lineup */}
+        <Reveal className="mt-4 overflow-hidden rounded-2xl border border-white/5">
+          {/* header row — hidden on mobile */}
+          <div className="hidden grid-cols-12 gap-4 border-b border-white/5 bg-white/[0.02] px-6 py-3.5 md:grid">
+            <div className="col-span-4 kicker text-[#7a7464]">Model</div>
+            <div className="col-span-3 kicker text-[#7a7464]">Architecture</div>
+            <div className="col-span-2 kicker text-[#7a7464]">Memory</div>
+            <div className="col-span-2 kicker text-[#7a7464]">Fabric</div>
+            <div className="col-span-1 kicker text-right text-[#7a7464]">Perf</div>
+          </div>
+          {lineup.map((g) => (
+            <div
+              key={g.name}
+              className="grid grid-cols-2 items-center gap-x-4 gap-y-1 border-b border-white/5 px-6 py-4 transition-colors last:border-0 hover:bg-amber-400/[0.03] md:grid-cols-12"
             >
-              {/* Image */}
-              <div className="relative h-48 w-full overflow-hidden bg-black">
-                <Image
-                  src={gpu.image}
-                  alt={gpu.name}
-                  fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#100e0a] via-transparent to-transparent" />
-                {gpu.badge && (
-                  <span className="absolute right-4 top-4 rounded-full border border-amber-400/20 bg-[#060504]/70 px-3 py-1 text-xs font-medium text-amber-300 backdrop-blur-sm">
-                    {gpu.badge}
-                  </span>
-                )}
+              <div className="col-span-2 font-display text-base font-semibold md:col-span-4">
+                {g.name}
               </div>
-
-              <div className="p-8 pt-6">
-                <h3 className="text-xl font-semibold">{gpu.name}</h3>
-                <p className="mt-2 text-sm text-[#9a9384]">{gpu.description}</p>
-                <div className="mt-6 grid grid-cols-3 gap-4 border-t border-white/5 pt-6">
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-[#9a9384]">Memory</p>
-                    <p className="mt-1 text-sm font-medium text-amber-100">{gpu.specs.memory}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-[#9a9384]">Interconnect</p>
-                    <p className="mt-1 text-sm font-medium text-amber-100">{gpu.specs.interconnect}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-[#9a9384]">Performance</p>
-                    <p className="mt-1 text-sm font-medium text-amber-100">{gpu.specs.perf}</p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+              <div className="kicker text-[#7a7464] md:hidden">Arch</div>
+              <div className="col-span-3 text-right text-sm text-[#cfc8b8] md:text-left">{g.arch}</div>
+              <div className="kicker text-[#7a7464] md:hidden">Memory</div>
+              <div className="col-span-2 text-right font-mono text-sm text-amber-100 md:text-left">{g.memory}</div>
+              <div className="kicker text-[#7a7464] md:hidden">Fabric</div>
+              <div className="col-span-2 text-right text-sm text-[#cfc8b8] md:text-left">{g.fabric}</div>
+              <div className="kicker text-[#7a7464] md:hidden">Perf</div>
+              <div className="col-span-1 text-right font-mono text-sm text-[#cfc8b8]">{g.perf}</div>
+            </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
