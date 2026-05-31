@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Platform from "@/components/Platform";
+import ManagedPlatform from "@/components/ManagedPlatform";
 import Solutions from "@/components/Solutions";
 import Infrastructure from "@/components/Infrastructure";
 import Metrics from "@/components/Metrics";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Platform />
+      <ManagedPlatform />
       <Solutions />
       <Infrastructure />
       <Metrics />

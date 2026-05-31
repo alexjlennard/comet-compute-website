@@ -3,6 +3,7 @@ import Reveal from "./Reveal";
 export default function Comparison() {
   const rows = [
     { feature: "Hardware Isolation", comet: "Fully dedicated", others: "Shared / multi-tenant" },
+    { feature: "Orchestration", comet: "Managed K8s & Slurm", others: "DIY on bare metal" },
     { feature: "Pricing Model", comet: "Fixed monthly", others: "Complex metered billing" },
     { feature: "GPU Availability", comet: "Guaranteed capacity", others: "Waitlists & spot interruptions" },
     { feature: "Support", comet: "Dedicated engineer", others: "Ticket-based support" },

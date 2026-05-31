@@ -7,6 +7,7 @@ import { solutionsByGroup } from "@/lib/solutions";
 
 const navigation = [
   { name: "Platform", href: "/#platform" },
+  { name: "Managed", href: "/#managed" },
   { name: "Infrastructure", href: "/#infrastructure" },
   { name: "About", href: "/#about" },
 ];
