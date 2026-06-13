@@ -20,57 +20,57 @@ export default function SolutionsIndex() {
     <>
       <Navbar />
 
-      <section className="relative overflow-hidden px-6 pb-16 pt-36">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-amber-500/10 blur-[140px]" />
-        </div>
-        <div className="relative mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium uppercase tracking-widest text-amber-400">Solutions</p>
-          <h1 className="display-lg mt-3 text-balance text-4xl leading-[1.05] sm:text-5xl">
-            Infrastructure tailored to your workload
+      <section className="relative border-b border-[color:var(--rule)] px-6 pb-20 pt-40 lg:px-10">
+        <div className="mx-auto max-w-[88rem]">
+          <span className="label text-gold">Solutions</span>
+          <h1 className="serif mt-8 max-w-4xl text-[3rem] leading-[0.95] sm:text-7xl">
+            Infrastructure tailored
+            <br />
+            to your <span className="serif-italic text-gold">workload.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#b8b1a0]">
-            Whether you&apos;re training frontier models, serving inference at scale, or running
-            clinical AI, we build the dedicated cluster to match.
+          <p className="measure mt-8 text-lg leading-relaxed text-fg-dim">
+            Training frontier models, serving inference at scale, or running
+            clinical AI — we build the dedicated cluster to match.
           </p>
         </div>
       </section>
 
       {(["Use Case", "Industry"] as const).map((groupName) => (
-        <section key={groupName} className="px-6 py-12">
-          <div className="mx-auto max-w-7xl">
-            <Reveal>
-              <h2 className="text-sm font-medium uppercase tracking-widest text-amber-400/70">
-                By {groupName}
-              </h2>
-            </Reveal>
-            <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <section key={groupName} className="border-b border-[color:var(--rule)] px-6 py-16 lg:px-10">
+          <div className="mx-auto max-w-[88rem]">
+            <div className="flex items-baseline gap-4 border-b border-[color:var(--rule)] pb-4">
+              <span className="label">By {groupName}</span>
+            </div>
+            <div className="mt-10 grid gap-px border border-[color:var(--rule)] bg-[color:var(--rule)] md:grid-cols-2 lg:grid-cols-3">
               {groups[groupName].map((s, i) => (
-                <Reveal key={s.slug} delay={(i % 3) * 90}>
+                <Reveal key={s.slug} delay={(i % 3) * 80}>
                   <Link
                     href={`/solutions/${s.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#100e0a] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20"
+                    className="group flex h-full flex-col bg-ink transition-colors hover:bg-ink-raised"
                   >
-                    <div className="relative h-40 w-full overflow-hidden bg-black">
+                    <div className="relative h-44 w-full overflow-hidden bg-black">
                       <Image
                         src={s.image}
                         alt={s.name}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover opacity-80 grayscale transition-all duration-700 group-hover:scale-[1.04] group-hover:opacity-100 group-hover:grayscale-0"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#100e0a] to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink to-transparent" />
+                      <span className="mono absolute left-4 top-4 text-xs text-gold">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="text-lg font-semibold group-hover:text-amber-200">{s.name}</h3>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-[#9a9384]">
+                    <div className="flex flex-1 flex-col p-7">
+                      <h3 className="serif text-2xl text-fg transition-colors group-hover:text-gold-bright">
+                        {s.name}
+                      </h3>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-fg-dim">
                         {s.menuDescription}
                       </p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-amber-300">
-                        Learn more
-                        <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                      <span className="mt-5 inline-flex items-center gap-2 text-sm text-gold">
+                        Read more
+                        <span className="mono transition-transform group-hover:translate-x-1">→</span>
                       </span>
                     </div>
                   </Link>
@@ -81,9 +81,7 @@ export default function SolutionsIndex() {
         </section>
       ))}
 
-      <div className="mt-12">
-        <CTA />
-      </div>
+      <CTA />
       <Footer />
     </>
   );

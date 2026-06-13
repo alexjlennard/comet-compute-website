@@ -1,26 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
+import { Instrument_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Display — high-contrast editorial serif. Used only for the largest moments.
+const serif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+});
+
+// Body / UI — humanist grotesque.
+const sans = Hanken_Grotesk({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Data / labels / terminal.
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
-});
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Comet Compute | Dedicated GPU Infrastructure for AI",
-  description: "Single-tenant NVIDIA GPU servers with private deployments, predictable pricing, and zero noisy neighbors. Dedicated AI compute, built for your workload.",
+  title: "Comet Compute — Dedicated GPU infrastructure for AI",
+  description:
+    "Single-tenant NVIDIA clusters. No noisy neighbors, no metered surprises, no procurement theater. Managed Kubernetes and Slurm, tuned before you log in.",
   icons: {
     icon: "/assets/comet-logo.png",
     apple: "/assets/comet-logo.png",
@@ -35,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${serif.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

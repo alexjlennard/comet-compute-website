@@ -1,108 +1,109 @@
 import Link from "next/link";
-import CometField from "./CometField";
-import CountUp from "./CountUp";
-import PingPongVideo from "./PingPongVideo";
+import ClusterDiagram from "./ClusterDiagram";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Atmosphere */}
-      <CometField />
-      <div className="mesh pointer-events-none absolute inset-0" />
+    <section className="relative overflow-hidden">
+      {/* masked blueprint grid — structural, not a glow */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="blueprint pointer-events-none absolute inset-0 opacity-40"
         style={{
-          backgroundImage: `linear-gradient(rgba(245,205,122,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(245,205,122,0.4) 1px, transparent 1px)`,
-          backgroundSize: "72px 72px",
-          maskImage: "radial-gradient(ellipse 90% 70% at 30% 30%, #000 20%, transparent 70%)",
-          WebkitMaskImage: "radial-gradient(ellipse 90% 70% at 30% 30%, #000 20%, transparent 70%)",
+          maskImage:
+            "radial-gradient(120% 90% at 75% 15%, #000 0%, transparent 65%)",
+          WebkitMaskImage:
+            "radial-gradient(120% 90% at 75% 15%, #000 0%, transparent 65%)",
         }}
       />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pt-28 pb-12 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          {/* Left: editorial copy */}
+      <div className="relative mx-auto max-w-[88rem] px-6 lg:px-10">
+        <div className="grid min-h-screen grid-cols-1 items-center gap-x-10 gap-y-16 pt-32 pb-20 lg:grid-cols-12">
+          {/* Left — editorial copy, 7 cols, deliberately wider than the diagram */}
           <div className="lg:col-span-7">
-            <div className="animate-fade-in-up flex items-center gap-3">
-              <span className="kicker">Comet Compute</span>
-              <span className="h-px w-10 bg-amber-400/50" />
-              <span className="kicker text-[#9a9384]">Neocloud for AI</span>
+            <div className="reveal is-visible flex items-center gap-4">
+              <span className="label text-gold">Comet Compute</span>
+              <span className="h-px w-12 bg-[color:var(--rule-strong)]" />
+              <span className="label">Private GPU cloud</span>
             </div>
 
-            <h1 className="animate-fade-in-up delay-100 display-xl mt-7 text-[3.25rem] sm:text-7xl lg:text-[5.5rem]">
-              Dedicated GPUs.
+            <h1 className="serif mt-10 text-[3.5rem] leading-[0.9] tracking-[-0.02em] sm:text-[5.5rem] lg:text-[7rem]">
+              Your GPUs.
               <br />
-              <span className="text-amber-400">Zero</span> noisy
+              Nobody
               <br />
-              neighbors.
+              else&apos;s <span className="serif-italic text-gold">on them.</span>
             </h1>
 
-            <p className="animate-fade-in-up delay-200 mt-8 max-w-xl text-lg leading-relaxed text-[#b8b1a0]">
-              Single-tenant NVIDIA clusters with managed Kubernetes, predictable
-              pricing, and a stack that&apos;s tuned before you log in. Plug in and
-              train on day one.
+            <p className="measure mt-10 text-xl leading-relaxed text-fg-dim text-pretty">
+              Single-tenant NVIDIA clusters — bare metal that&apos;s yours alone,
+              with managed Kubernetes and Slurm tuned before you log in. No
+              shared silicon. No metered surprises. No six-month procurement
+              theater.
             </p>
 
-            <div className="animate-fade-in-up delay-300 mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-x-8 gap-y-5 sm:flex-row sm:items-center">
               <Link
                 href="#contact"
-                className="group flex items-center justify-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#1a1206] transition-all hover:bg-amber-300 hover:shadow-[0_0_50px_-12px_rgba(232,177,76,0.8)]"
+                className="group inline-flex items-center justify-center gap-2.5 bg-gold px-7 py-4 text-sm font-semibold tracking-tight text-[#0a0805] transition-colors hover:bg-gold-bright"
               >
-                Deploy your cluster
-                <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                Spec your cluster
+                <span className="mono transition-transform group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
               <Link
-                href="#platform"
-                className="flex items-center justify-center rounded-full border border-white/15 px-7 py-3.5 text-sm font-medium text-[#f5f3ee] transition-all hover:border-amber-400/40 hover:bg-white/5"
+                href="#infrastructure"
+                className="link-grow inline-flex items-center gap-2 self-start text-sm text-fg-dim transition-colors hover:text-fg sm:self-auto"
               >
-                Explore the platform
+                <span className="mono text-gold">$</span> see the hardware
               </Link>
             </div>
           </div>
 
-          {/* Right: framed live video panel */}
-          <div className="animate-fade-in-up delay-300 lg:col-span-5">
-            <div className="glass relative overflow-hidden rounded-2xl">
-              <div className="flex items-center justify-between border-b border-white/5 px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse-glow" />
-                  <span className="kicker text-[#9a9384]">cluster · live</span>
-                </div>
-                <span className="font-mono text-[11px] text-[#6f6857]">GB300 NVL72</span>
-              </div>
-              <div className="relative aspect-[4/5]">
-                <PingPongVideo
-                  className="h-full w-full object-cover"
-                  src="/assets/hero-loop.mp4"
-                  poster="/assets/rack-tall.png"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#100e0a] via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 font-mono text-[11px] text-[#cfc8b8]">
-                  <span>72 GPU · NVLink 5</span>
-                  <span className="text-amber-400">● online</span>
-                </div>
-              </div>
-            </div>
+          {/* Right — the topology drawing, 5 cols, on a raised slab offset down */}
+          <div className="lg:col-span-5 lg:translate-y-6">
+            <figure className="relative border border-[color:var(--rule)] bg-ink-raised/60 p-6 sm:p-8">
+              {/* corner registration ticks — like a technical print */}
+              <Corner className="left-0 top-0" />
+              <Corner className="right-0 top-0 rotate-90" />
+              <Corner className="bottom-0 left-0 -rotate-90" />
+              <Corner className="bottom-0 right-0 rotate-180" />
+              <ClusterDiagram />
+            </figure>
           </div>
         </div>
+      </div>
 
-        {/* Full-width stat bar */}
-        <div className="animate-fade-in-up delay-500 mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/[0.04] sm:grid-cols-4">
+      {/* Stat ledger — a single ruled row, not a 4-card grid */}
+      <div className="relative border-y border-[color:var(--rule)]">
+        <div className="mx-auto grid max-w-[88rem] grid-cols-2 px-6 lg:grid-cols-4 lg:px-10">
           {[
-            { node: <CountUp end={99.9} decimals={1} suffix="%" />, label: "Uptime SLA" },
-            { node: <>100%</>, label: "Dedicated hardware" },
-            { node: <CountUp end={400} suffix="Gb/s" />, label: "Interconnect" },
-            { node: <>24/7</>, label: "Expert support" },
-          ].map((stat, i) => (
-            <div key={i} className="bg-[#0b0a07] px-6 py-7">
-              <div className="display-lg text-3xl text-white sm:text-4xl">{stat.node}</div>
-              <div className="kicker mt-2 text-[#7a7464]">{stat.label}</div>
+            { k: "Tenancy", v: "100%", note: "dedicated hardware" },
+            { k: "Fabric", v: "400G", note: "InfiniBand + NVLink" },
+            { k: "Uptime", v: "99.9%", note: "contractual SLA" },
+            { k: "Support", v: "1:1", note: "named engineer" },
+          ].map((s, i) => (
+            <div
+              key={s.k}
+              className={`flex flex-col gap-1 py-8 ${
+                i !== 0 ? "lg:border-l lg:border-[color:var(--rule)] lg:pl-8" : ""
+              } ${i % 2 !== 0 ? "border-l border-[color:var(--rule)] pl-8 lg:pl-8" : ""}`}
+            >
+              <span className="label">{s.k}</span>
+              <span className="serif text-4xl text-fg sm:text-5xl">{s.v}</span>
+              <span className="mono text-xs text-fg-faint">{s.note}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function Corner({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`absolute h-3 w-3 border-l border-t border-gold/50 ${className}`}
+    />
   );
 }

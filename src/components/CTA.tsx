@@ -7,79 +7,72 @@ export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" className="relative py-32 px-6">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/8 blur-[150px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-5xl">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+    <section id="contact" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
+      <div className="mx-auto max-w-[88rem]">
+        <div className="grid items-start gap-x-16 gap-y-14 lg:grid-cols-2">
           <Reveal>
-            <div className="flex items-center gap-3">
-              <span className="kicker">08</span>
-              <span className="h-px w-8 bg-amber-400/50" />
-              <span className="kicker text-[#9a9384]">Get started</span>
+            <div className="flex items-baseline gap-4 border-b border-[color:var(--rule)] pb-4">
+              <span className="mono text-sm text-gold">08</span>
+              <span className="label">Get started</span>
             </div>
-            <h2 className="display-lg mt-5 text-balance text-4xl sm:text-5xl">
-              Ready to leave the
+            <h2 className="serif mt-10 text-5xl leading-[0.95] sm:text-7xl">
+              Done sharing
               <br />
-              cloud behind?
+              <span className="serif-italic text-gold">someone else&apos;s</span>
+              <br />
+              GPUs?
             </h2>
-            <p className="mt-5 max-w-xl text-lg text-[#9a9384]">
-              Talk to our team about dedicated GPU infrastructure tailored to your AI
-              workloads. We&apos;ll scope your requirements and build the cluster to match.
+            <p className="measure mt-8 text-lg leading-relaxed text-fg-dim">
+              Tell us what you&apos;re building. We&apos;ll scope the cluster, quote a
+              fixed monthly number, and have it racked before your next training
+              run needs it.
             </p>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-10 space-y-3 border-t border-[color:var(--rule)] pt-6">
               {[
                 "Custom-scoped cluster proposal",
-                "Transparent, fixed monthly pricing",
-                "Dedicated solutions engineer",
+                "One fixed monthly price — no egress, no metering",
+                "A named solutions engineer from day one",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-[#cfc8b8]">
-                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-amber-400/10 text-amber-400">
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                  </span>
+                <li key={item} className="flex items-baseline gap-3 text-sm text-fg-dim">
+                  <span className="mono text-gold">→</span>
                   {item}
                 </li>
               ))}
             </ul>
           </Reveal>
 
-          <Reveal delay={120}>
-            <div className="glass rounded-2xl p-8">
+          <Reveal delay={100}>
+            <div className="border border-[color:var(--rule-strong)] bg-ink-raised/40 p-8 lg:p-10">
               {submitted ? (
-                <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-400/10 text-amber-400">
-                    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <h3 className="mt-5 text-xl font-semibold">Thanks — we&apos;ll be in touch</h3>
-                  <p className="mt-2 text-sm text-[#9a9384]">
-                    Our team will reach out within one business day to scope your workload.
+                <div className="flex min-h-[400px] flex-col items-start justify-center">
+                  <span className="mono text-gold">→ received</span>
+                  <h3 className="serif mt-4 text-3xl text-fg">
+                    We&apos;ll be in touch.
+                  </h3>
+                  <p className="mt-3 text-sm text-fg-dim">
+                    A solutions engineer reaches out within one business day to
+                    scope your workload.
                   </p>
                 </div>
               ) : (
                 <form
-                  className="space-y-4"
+                  className="space-y-5"
                   onSubmit={(e) => {
                     e.preventDefault();
                     setSubmitted(true);
                   }}
                 >
-                  <h3 className="text-lg font-semibold">Request a cluster proposal</h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <p className="label">Request a proposal</p>
+                  <div className="grid grid-cols-2 gap-5">
                     <Field label="Name" name="name" placeholder="Jane Doe" required />
                     <Field label="Company" name="company" placeholder="Acme AI" required />
                   </div>
                   <Field label="Work email" name="email" type="email" placeholder="jane@acme.ai" required />
                   <div>
-                    <label className="mb-1.5 block text-sm text-[#cfc8b8]">GPU requirement</label>
+                    <label className="label mb-2 block">GPU footprint</label>
                     <select
                       name="gpus"
-                      className="w-full rounded-lg border border-white/10 bg-[#060504] px-3.5 py-2.5 text-sm text-white outline-none transition-colors focus:border-amber-400/40"
+                      className="w-full border border-[color:var(--rule-strong)] bg-ink px-3.5 py-3 text-sm text-fg outline-none transition-colors focus:border-gold"
                       defaultValue=""
                       required
                     >
@@ -92,25 +85,23 @@ export default function CTA() {
                     </select>
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-sm text-[#cfc8b8]">What are you building?</label>
+                    <label className="label mb-2 block">What are you building?</label>
                     <textarea
                       name="message"
                       rows={3}
-                      placeholder="Briefly describe your workload…"
-                      className="w-full resize-none rounded-lg border border-white/10 bg-[#060504] px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-[#5f594d] focus:border-amber-400/40"
+                      placeholder="Briefly — model, scale, timeline…"
+                      className="w-full resize-none border border-[color:var(--rule-strong)] bg-ink px-3.5 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-gold"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-6 py-3 text-sm font-semibold text-[#1a1206] transition-all hover:from-amber-300 hover:to-amber-400 hover:shadow-lg hover:shadow-amber-500/25"
+                    className="group flex w-full items-center justify-center gap-2.5 bg-gold px-6 py-3.5 text-sm font-semibold text-[#0a0805] transition-colors hover:bg-gold-bright"
                   >
-                    Request Proposal
-                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    Send it
+                    <span className="mono transition-transform group-hover:translate-x-1">→</span>
                   </button>
-                  <p className="text-center text-xs text-[#9a9384]">
-                    No commitment required. We&apos;ll respond within one business day.
+                  <p className="mono text-center text-xs text-fg-faint">
+                    No commitment. Reply within one business day.
                   </p>
                 </form>
               )}
@@ -137,13 +128,13 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm text-[#cfc8b8]">{label}</label>
+      <label className="label mb-2 block">{label}</label>
       <input
         type={type}
         name={name}
         placeholder={placeholder}
         required={required}
-        className="w-full rounded-lg border border-white/10 bg-[#060504] px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-[#5f594d] focus:border-amber-400/40"
+        className="w-full border border-[color:var(--rule-strong)] bg-ink px-3.5 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-gold"
       />
     </div>
   );

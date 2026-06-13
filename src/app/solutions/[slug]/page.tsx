@@ -42,149 +42,142 @@ export default async function SolutionPage({
       <Navbar />
 
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 pb-20 pt-36">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-amber-500/10 blur-[140px]" />
-        </div>
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+      <section className="relative border-b border-[color:var(--rule)] px-6 pb-20 pt-40 lg:px-10">
+        <div className="mx-auto grid max-w-[88rem] items-center gap-x-14 gap-y-12 lg:grid-cols-2">
           <div>
-            <nav className="mb-5 flex items-center gap-2 text-sm text-[#9a9384]">
-              <Link href="/solutions" className="transition-colors hover:text-amber-200">
+            <nav className="mb-6 flex items-center gap-2 text-sm text-fg-faint">
+              <Link href="/solutions" className="link-grow transition-colors hover:text-fg">
                 Solutions
               </Link>
-              <span>/</span>
-              <span className="text-[#cfc8b8]">{solution.group}</span>
+              <span className="mono">/</span>
+              <span className="text-fg-dim">{solution.group}</span>
             </nav>
-            <p className="text-sm font-medium uppercase tracking-widest text-amber-400">
-              {solution.eyebrow}
-            </p>
-            <h1 className="display-lg mt-3 text-balance text-4xl leading-[1.05] sm:text-5xl">
+            <span className="label text-gold">{solution.eyebrow}</span>
+            <h1 className="serif mt-6 text-balance text-[2.75rem] leading-[0.95] sm:text-6xl">
               {solution.headline}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#b8b1a0]">
+            <p className="measure mt-6 text-lg leading-relaxed text-fg-dim">
               {solution.subhead}
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-x-8 gap-y-4 sm:flex-row sm:items-center">
               <Link
                 href="/#contact"
-                className="group flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-7 py-3.5 text-sm font-semibold text-[#1a1206] transition-all hover:from-amber-300 hover:to-amber-400 hover:shadow-lg hover:shadow-amber-500/25"
+                className="group inline-flex items-center justify-center gap-2.5 bg-gold px-7 py-3.5 text-sm font-semibold text-[#0a0805] transition-colors hover:bg-gold-bright"
               >
                 Talk to our team
-                <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <span className="mono transition-transform group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 href="/#infrastructure"
-                className="flex items-center justify-center rounded-xl border border-white/10 px-7 py-3.5 text-sm font-medium transition-all hover:border-white/20 hover:bg-white/5"
+                className="link-grow inline-flex items-center gap-2 self-start text-sm text-fg-dim transition-colors hover:text-fg sm:self-auto"
               >
-                View hardware
+                <span className="mono text-gold">$</span> view hardware
               </Link>
             </div>
           </div>
 
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/5 bg-black">
+          <div className="relative aspect-[4/3] w-full overflow-hidden border border-[color:var(--rule-strong)] bg-black">
             <Image
               src={solution.image}
               alt={solution.name}
               fill
               priority
-              className="object-cover"
+              className="object-cover opacity-90"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#060504]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
           </div>
         </div>
       </section>
 
       {/* Stats strip */}
-      <section className="px-6 py-8">
-        <div className="mx-auto grid max-w-5xl gap-px overflow-hidden rounded-2xl border border-amber-400/10 bg-amber-400/5 sm:grid-cols-3">
-          {solution.stats.map((stat) => (
-            <div key={stat.label} className="bg-[#0c0a07] p-6 text-center">
-              <div className="display-lg text-3xl text-amber-400">{stat.value}</div>
-              <div className="mt-1 text-sm text-[#9a9384]">{stat.label}</div>
+      <section className="border-b border-[color:var(--rule)] px-6 lg:px-10">
+        <div className="mx-auto grid max-w-[88rem] sm:grid-cols-3">
+          {solution.stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`py-8 ${i !== 0 ? "sm:border-l sm:border-[color:var(--rule)] sm:pl-8" : ""}`}
+            >
+              <div className="serif text-4xl text-gold sm:text-5xl">{stat.value}</div>
+              <div className="mono mt-2 text-xs uppercase tracking-[0.12em] text-fg-faint">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <Reveal className="max-w-2xl">
-            <h2 className="display-lg text-balance text-3xl sm:text-4xl">
+      <section className="px-6 py-28 lg:px-10">
+        <div className="mx-auto max-w-[88rem]">
+          <Reveal>
+            <div className="flex items-baseline gap-4 border-b border-[color:var(--rule)] pb-4">
+              <span className="label">Capabilities</span>
+            </div>
+            <h2 className="serif mt-8 max-w-2xl text-balance text-4xl sm:text-5xl">
               Built for the way you work
             </h2>
-            <p className="mt-4 text-lg text-[#9a9384]">
-              Every detail of the stack is tuned for {solution.name}.
-            </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-16 grid gap-px border-t border-[color:var(--rule)] sm:grid-cols-2">
             {solution.capabilities.map((cap, i) => (
               <Reveal
                 key={cap.title}
-                delay={(i % 2) * 90}
-                className="gradient-border rounded-2xl bg-[#100e0a] p-8"
+                delay={(i % 2) * 80}
+                className={`p-8 lg:p-10 ${
+                  i % 2 !== 0 ? "sm:border-l sm:border-[color:var(--rule)]" : ""
+                } ${i >= 2 ? "border-t border-[color:var(--rule)]" : ""}`}
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-400/10 text-amber-400">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">{cap.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9384]">{cap.description}</p>
+                <span className="mono text-xs text-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="serif mt-5 text-2xl text-fg">{cap.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-fg-dim">{cap.description}</p>
               </Reveal>
             ))}
           </div>
 
           {/* Related hardware */}
-          <Reveal className="mt-12 flex flex-col gap-5 rounded-2xl border border-white/5 bg-[#0c0a07] p-8 sm:flex-row sm:items-center sm:justify-between">
+          <Reveal className="mt-px flex flex-col gap-5 border border-[color:var(--rule-strong)] p-8 sm:flex-row sm:items-center sm:justify-between lg:p-10">
             <div>
-              <p className="text-sm font-medium uppercase tracking-widest text-amber-400/70">
-                Recommended hardware
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <span className="label">Recommended hardware</span>
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
                 {solution.relatedGpus.map((gpu) => (
-                  <span
-                    key={gpu}
-                    className="rounded-full border border-amber-400/10 bg-amber-400/5 px-3 py-1.5 text-sm text-amber-200/80"
-                  >
-                    {gpu}
+                  <span key={gpu} className="mono text-sm text-gold">
+                    {gpu.replace("NVIDIA ", "")}
                   </span>
                 ))}
               </div>
             </div>
             <Link
               href="/#infrastructure"
-              className="flex flex-shrink-0 items-center gap-2 text-sm font-medium text-amber-300 transition-colors hover:text-amber-200"
+              className="link-grow inline-flex flex-shrink-0 items-center gap-2 text-sm text-gold"
             >
-              Explore all GPUs
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              All GPUs
+              <span className="mono">→</span>
             </Link>
           </Reveal>
         </div>
       </section>
 
       {/* Other solutions */}
-      <section className="border-t border-white/5 px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="display-lg text-2xl">Explore other solutions</h2>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {others.map((s) => (
+      <section className="border-t border-[color:var(--rule)] px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-[88rem]">
+          <h2 className="serif text-3xl">Other solutions</h2>
+          <div className="mt-10 grid gap-px border-t border-[color:var(--rule)] lg:grid-cols-3">
+            {others.map((s, i) => (
               <Link
                 key={s.slug}
                 href={`/solutions/${s.slug}`}
-                className="group rounded-2xl border border-white/5 bg-[#100e0a] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20"
+                className={`group p-8 transition-colors hover:bg-ink-raised ${
+                  i !== 0 ? "border-t border-[color:var(--rule)] lg:border-l lg:border-t-0" : ""
+                }`}
               >
-                <p className="text-xs font-medium uppercase tracking-widest text-amber-400/70">
-                  {s.group}
-                </p>
-                <h3 className="mt-2 text-lg font-semibold group-hover:text-amber-200">{s.name}</h3>
-                <p className="mt-2 text-sm leading-snug text-[#9a9384]">{s.menuDescription}</p>
+                <span className="label text-gold">{s.group}</span>
+                <h3 className="serif mt-3 text-2xl text-fg transition-colors group-hover:text-gold-bright">
+                  {s.name}
+                </h3>
+                <p className="mt-2 text-sm leading-snug text-fg-dim">{s.menuDescription}</p>
               </Link>
             ))}
           </div>

@@ -1,256 +1,192 @@
 @import "tailwindcss";
 
+/*
+  Comet Compute — "Technical editorial, set in the dark"
+  ----------------------------------------------------------------
+  Display:  Instrument Serif   — headlines only, large, tight
+  Body/UI:  Hanken Grotesk     — humanist grotesque
+  Data:     JetBrains Mono     — labels, specs, terminal
+
+  Gold is an INK, not a fill. It lives in type, hairlines, and the
+  single primary action — never as a 10%-opacity tinted box.
+*/
+
 :root {
-  --background: #070605;
-  --foreground: #f5f3ee;
-  --accent: #e8b14c;
-  --accent-light: #f5cd7a;
-  --accent-deep: #c8902f;
-  --accent-pink: #f25c8a;
-  --accent-blue: #3b6fe0;
-  --surface: #100e0a;
-  --surface-light: #1a1712;
-  --border: rgba(245, 240, 230, 0.08);
-  --hairline: rgba(245, 240, 230, 0.1);
-  --text-muted: #9a9384;
-  /* light / inverted section */
-  --bone: #ede7da;
-  --bone-ink: #14110a;
+  --ink: #08070a;          /* page — warm near-black with a cool edge */
+  --ink-raised: #0e0d11;   /* raised panel */
+  --ink-line: #1b1a1f;     /* solid hairline */
+  --paper: #f3efe6;        /* inverted "paper" section */
+  --paper-ink: #14110b;
+
+  --fg: #ece9e3;           /* primary text */
+  --fg-dim: #9b978d;       /* secondary text */
+  --fg-faint: #625f58;     /* tertiary / captions */
+
+  --gold: #e3a72c;         /* the one accent — used as ink */
+  --gold-bright: #f4c560;  /* hover / emphasis */
+  --rule: rgba(236, 233, 227, 0.1);
+  --rule-strong: rgba(236, 233, 227, 0.16);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-deep: var(--accent-deep);
-  --color-accent-pink: var(--accent-pink);
-  --color-accent-blue: var(--accent-blue);
-  --color-surface: var(--surface);
-  --color-surface-light: var(--surface-light);
-  --color-border: var(--border);
-  --color-muted: var(--text-muted);
-  --color-bone: var(--bone);
-  --color-bone-ink: var(--bone-ink);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-display);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-line: var(--ink-line);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-fg: var(--fg);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--ink);
+  color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv01";
   overflow-x: hidden;
+  /* faint vertical seam down the right gutter to imply a layout grid */
+  text-rendering: optimizeLegibility;
 }
 
-@layer base {
-  * {
-    border-color: var(--border);
-  }
+::selection {
+  background: var(--gold);
+  color: #0a0805;
 }
 
-/* ---------- Keyframe animations ---------- */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+/* ---------- Type system ---------- */
+
+/* Editorial serif display. Tight, large, with optical italics for tension. */
+.serif {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+}
+.serif-italic {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+/* Mono label: "01 / INFRASTRUCTURE" — the structural voice of the site. */
+.label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.mono {
+  font-family: var(--font-mono), monospace;
 }
 
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ---------- Rhythm helpers ---------- */
+.measure { max-width: 34rem; }
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* Solid hairline rules — no gradients. */
+.rule-t { border-top: 1px solid var(--rule); }
+.rule-b { border-bottom: 1px solid var(--rule); }
+
+/* The single gold "tick" that marks section starts. */
+.tick {
+  display: inline-block;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--gold);
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-.animate-marquee { animation: marquee 40s linear infinite; }
-.animate-spin-slow { animation: spin-slow 28s linear infinite; }
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  opacity: 0;
-}
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-700 { animation-delay: 0.7s; }
-
-/* ---------- Scroll reveal ---------- */
+/* ---------- Motion ---------- */
+/* One restrained reveal. Slightly different distances per use to avoid
+   the uniform "everything floats up 28px in unison" AI cadence. */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+@keyframes blink {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0; }
+}
+.caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 0.1em;
+  vertical-align: text-bottom;
+  background: var(--gold);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .animate-fade-in-up { animation: none; opacity: 1; }
+  .caret { animation: none; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }
 
-/* ---------- Brand utilities ---------- */
-.gradient-text {
-  background: linear-gradient(135deg, #f5f3ee 0%, #f5cd7a 45%, #e8b14c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-warm {
-  background: linear-gradient(120deg, #f5cd7a 0%, #f25c8a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-border {
-  position: relative;
-}
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(232, 177, 76, 0.35), rgba(242, 92, 138, 0.12), transparent 70%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.glow {
-  box-shadow: 0 0 40px rgba(232, 177, 76, 0.15), 0 0 80px rgba(232, 177, 76, 0.05);
-}
-
-.text-balance { text-wrap: balance; }
-
-/* Fade edges for marquee */
-.fade-x-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
-/* ---------- Editorial type system ---------- */
-.font-display {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
-}
-
-.display-xl {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.95;
-}
-
-.display-lg {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.0;
-}
-
-/* Mono kicker label: "01 — INFRASTRUCTURE" */
-.kicker {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* ---------- Depth & texture ---------- */
-/* Film grain overlay applied site-wide via body::after */
+/* ---------- Texture ---------- */
+/* Fine grain — kept very low. Adds soul without the corporate-flat look. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Layered mesh gradient background for atmosphere */
-.mesh {
-  background:
-    radial-gradient(60% 50% at 15% 0%, rgba(232, 177, 76, 0.10), transparent 60%),
-    radial-gradient(50% 50% at 85% 10%, rgba(242, 92, 138, 0.06), transparent 55%),
-    radial-gradient(70% 60% at 50% 100%, rgba(232, 177, 76, 0.05), transparent 65%);
+/* Engineering blueprint grid — used sparingly, masked, never as a glow. */
+.blueprint {
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-/* Hairline divider with fade */
-.hairline {
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--hairline), transparent);
-}
-
-/* Glass panel with real shadow + depth */
-.glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--hairline);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
-    0 30px 60px -20px rgba(0, 0, 0, 0.7);
-}
-
-.glass-hover {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, box-shadow 0.4s;
-}
-.glass-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 177, 76, 0.25);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
-    0 40px 80px -24px rgba(0, 0, 0, 0.8),
-    0 0 60px -20px rgba(232, 177, 76, 0.25);
-}
-
-/* Fine dotted/grid texture for panels */
-.dot-grid {
-  background-image: radial-gradient(rgba(245, 240, 230, 0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
-}
-
-/* Thin engraved top border accent on feature cells */
-.edge-top {
+/* Link underline that grows from the left — a small delightful detail. */
+.link-grow {
   position: relative;
 }
-.edge-top::before {
+.link-grow::after {
   content: "";
   position: absolute;
-  top: 0;
   left: 0;
-  right: 0;
+  bottom: -2px;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(232, 177, 76, 0.5), transparent);
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+.link-grow:hover::after { transform: scaleX(1); }

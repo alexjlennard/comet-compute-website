@@ -24,7 +24,7 @@ export default function Reveal({ children, className = "", delay = 0, as = "div"
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
 
     observer.observe(node);

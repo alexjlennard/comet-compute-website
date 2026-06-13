@@ -4,100 +4,98 @@ import SectionHeader from "./SectionHeader";
 
 export default function Infrastructure() {
   const featured = {
-    name: "NVIDIA GB300 NVL72",
-    tag: "Flagship · Blackwell Ultra",
+    name: "GB300 NVL72",
+    tag: "FLAGSHIP · BLACKWELL ULTRA",
     description:
-      "Our flagship rack-scale system for the largest training and inference workloads. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single, coherent accelerator.",
+      "Rack-scale system for the largest training and inference runs. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single coherent accelerator.",
     image: "/assets/cluster-nvl72.png",
     specs: [
       { k: "GPUs", v: "72 × Blackwell Ultra" },
-      { k: "Memory", v: "Up to 21TB" },
+      { k: "Memory", v: "up to 21 TB" },
       { k: "Interconnect", v: "NVLink 5" },
-      { k: "Performance", v: "1.5× GB200" },
+      { k: "vs GB200", v: "1.5× throughput" },
     ],
   };
 
   const lineup = [
-    { name: "NVIDIA GB200 NVL72", arch: "Grace Blackwell", memory: "Up to 13.5TB", fabric: "NVLink 5", perf: "1.4 EFLOPS" },
-    { name: "NVIDIA HGX B300", arch: "Blackwell Ultra", memory: "2.3TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
-    { name: "NVIDIA HGX B200", arch: "Blackwell", memory: "1.4TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
-    { name: "NVIDIA H200", arch: "Hopper", memory: "141GB HBM3e", fabric: "NVLink", perf: "989 TFLOPS" },
-    { name: "NVIDIA H100", arch: "Hopper", memory: "80GB HBM3", fabric: "NVLink", perf: "989 TFLOPS" },
+    { name: "GB200 NVL72", arch: "Grace Blackwell", memory: "up to 13.5 TB", fabric: "NVLink 5", perf: "1.4 EFLOPS" },
+    { name: "HGX B300", arch: "Blackwell Ultra", memory: "2.3 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
+    { name: "HGX B200", arch: "Blackwell", memory: "1.4 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
+    { name: "H200", arch: "Hopper", memory: "141 GB HBM3e", fabric: "NVLink", perf: "989 TFLOPS" },
+    { name: "H100", arch: "Hopper", memory: "80 GB HBM3", fabric: "NVLink", perf: "989 TFLOPS" },
   ];
 
   return (
-    <section id="infrastructure" className="relative px-6 py-28 lg:py-36">
-      <div className="relative mx-auto max-w-7xl">
+    <section id="infrastructure" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
+      <div className="mx-auto max-w-[88rem]">
         <SectionHeader
-          index="03"
-          kicker="Infrastructure"
+          index="04"
+          kicker="Hardware"
           title={
             <>
-              The latest NVIDIA silicon,
+              The latest silicon,
               <br />
-              ready to reserve.
+              ready to <span className="serif-italic text-gold">reserve.</span>
             </>
           }
-          lede="From Blackwell Ultra rack-scale systems to proven Hopper nodes — deployed in purpose-built facilities with enterprise networking."
+          lede="From Blackwell Ultra rack-scale systems to proven Hopper nodes — racked in purpose-built facilities with enterprise networking."
         />
 
-        {/* Featured flagship */}
-        <Reveal className="glass edge-top mt-14 grid overflow-hidden rounded-3xl lg:grid-cols-2">
-          <div className="relative min-h-[280px] overflow-hidden bg-black">
+        {/* Flagship — asymmetric split, image bleeds left */}
+        <Reveal className="mt-20 grid border border-[color:var(--rule-strong)] lg:grid-cols-5">
+          <div className="relative min-h-[320px] overflow-hidden bg-black lg:col-span-3">
             <Image
               src={featured.image}
               alt={featured.name}
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover opacity-90"
+              sizes="(max-width: 1024px) 100vw, 60vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0c0a07] lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#0c0a07]" />
-            <span className="absolute left-5 top-5 rounded-full border border-amber-400/30 bg-[#060504]/70 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-amber-300 backdrop-blur-sm">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-ink/70 lg:to-ink" />
+            <span className="mono absolute left-5 top-5 border border-gold/40 px-2.5 py-1 text-[10px] tracking-[0.16em] text-gold">
               {featured.tag}
             </span>
           </div>
-          <div className="flex flex-col justify-center p-8 lg:p-12">
-            <h3 className="display-lg text-3xl sm:text-4xl">{featured.name}</h3>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#9a9384]">
+          <div className="flex flex-col justify-center p-8 lg:col-span-2 lg:p-12">
+            <span className="label">NVIDIA</span>
+            <h3 className="serif mt-2 text-4xl text-fg sm:text-5xl">{featured.name}</h3>
+            <p className="mt-5 text-[15px] leading-relaxed text-fg-dim">
               {featured.description}
             </p>
-            <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5">
+            <dl className="mt-10 grid grid-cols-2 gap-px bg-[color:var(--rule)]">
               {featured.specs.map((s) => (
-                <div key={s.k} className="border-t border-white/10 pt-3">
-                  <dt className="kicker text-[#7a7464]">{s.k}</dt>
-                  <dd className="mt-1.5 font-mono text-sm text-amber-100">{s.v}</dd>
+                <div key={s.k} className="bg-ink p-4">
+                  <dt className="label">{s.k}</dt>
+                  <dd className="mono mt-2 text-sm text-gold">{s.v}</dd>
                 </div>
               ))}
             </dl>
           </div>
         </Reveal>
 
-        {/* Spec table for the rest of the lineup */}
-        <Reveal className="mt-4 overflow-hidden rounded-2xl border border-white/5">
-          {/* header row — hidden on mobile */}
-          <div className="hidden grid-cols-12 gap-4 border-b border-white/5 bg-white/[0.02] px-6 py-3.5 md:grid">
-            <div className="col-span-4 kicker text-[#7a7464]">Model</div>
-            <div className="col-span-3 kicker text-[#7a7464]">Architecture</div>
-            <div className="col-span-2 kicker text-[#7a7464]">Memory</div>
-            <div className="col-span-2 kicker text-[#7a7464]">Fabric</div>
-            <div className="col-span-1 kicker text-right text-[#7a7464]">Perf</div>
+        {/* Lineup table */}
+        <Reveal className="mt-px border-x border-b border-[color:var(--rule-strong)]">
+          <div className="hidden grid-cols-12 gap-4 border-b border-[color:var(--rule)] px-6 py-3 md:grid">
+            <div className="label col-span-4">Model</div>
+            <div className="label col-span-3">Architecture</div>
+            <div className="label col-span-2">Memory</div>
+            <div className="label col-span-2">Fabric</div>
+            <div className="label col-span-1 text-right">Perf</div>
           </div>
           {lineup.map((g) => (
             <div
               key={g.name}
-              className="grid grid-cols-2 items-center gap-x-4 gap-y-1 border-b border-white/5 px-6 py-4 transition-colors last:border-0 hover:bg-amber-400/[0.03] md:grid-cols-12"
+              className="grid grid-cols-2 items-center gap-x-4 gap-y-1 border-b border-[color:var(--rule)] px-6 py-4 transition-colors last:border-0 hover:bg-ink-raised md:grid-cols-12"
             >
-              <div className="col-span-2 font-display text-base font-semibold md:col-span-4">
-                {g.name}
-              </div>
-              <div className="kicker text-[#7a7464] md:hidden">Arch</div>
-              <div className="col-span-3 text-right text-sm text-[#cfc8b8] md:text-left">{g.arch}</div>
-              <div className="kicker text-[#7a7464] md:hidden">Memory</div>
-              <div className="col-span-2 text-right font-mono text-sm text-amber-100 md:text-left">{g.memory}</div>
-              <div className="kicker text-[#7a7464] md:hidden">Fabric</div>
-              <div className="col-span-2 text-right text-sm text-[#cfc8b8] md:text-left">{g.fabric}</div>
-              <div className="kicker text-[#7a7464] md:hidden">Perf</div>
-              <div className="col-span-1 text-right font-mono text-sm text-[#cfc8b8]">{g.perf}</div>
+              <div className="serif col-span-2 text-xl text-fg md:col-span-4">{g.name}</div>
+              <div className="label md:hidden">Arch</div>
+              <div className="col-span-3 text-right text-sm text-fg-dim md:text-left">{g.arch}</div>
+              <div className="label md:hidden">Memory</div>
+              <div className="mono col-span-2 text-right text-sm text-gold md:text-left">{g.memory}</div>
+              <div className="label md:hidden">Fabric</div>
+              <div className="col-span-2 text-right text-sm text-fg-dim md:text-left">{g.fabric}</div>
+              <div className="label md:hidden">Perf</div>
+              <div className="mono col-span-1 text-right text-sm text-fg-dim">{g.perf}</div>
             </div>
           ))}
         </Reveal>

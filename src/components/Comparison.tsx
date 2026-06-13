@@ -3,45 +3,65 @@ import SectionHeader from "./SectionHeader";
 
 export default function Comparison() {
   const rows = [
-    { feature: "Hardware Isolation", comet: "Fully dedicated", others: "Shared / multi-tenant" },
+    { feature: "Tenancy", comet: "Fully dedicated hardware", others: "Shared, multi-tenant" },
     { feature: "Orchestration", comet: "Managed K8s & Slurm", others: "DIY on bare metal" },
-    { feature: "Pricing Model", comet: "Fixed monthly", others: "Complex metered billing" },
-    { feature: "GPU Availability", comet: "Guaranteed capacity", others: "Waitlists & spot interruptions" },
-    { feature: "Support", comet: "Dedicated engineer", others: "Ticket-based support" },
-    { feature: "Network Egress", comet: "Included", others: "Per-GB charges" },
+    { feature: "Pricing", comet: "One fixed monthly number", others: "Metered billing maze" },
+    { feature: "Capacity", comet: "Guaranteed, reserved", others: "Waitlists & spot evictions" },
+    { feature: "Support", comet: "A named engineer", others: "A ticket queue" },
+    { feature: "Egress", comet: "Included", others: "Per-GB tax" },
   ];
 
   return (
-    <section className="relative py-28 px-6 lg:py-36">
-      <div className="relative mx-auto max-w-5xl">
+    <section id="why" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
+      <div className="mx-auto max-w-[72rem]">
         <SectionHeader
           index="06"
           kicker="Why Comet"
-          title="Not another hyperscaler."
-          lede="Teams building AI deserve better than fighting for shared resources on legacy cloud platforms."
+          title={
+            <>
+              Not another
+              <br />
+              <span className="serif-italic text-gold">hyperscaler.</span>
+            </>
+          }
+          lede="Teams building AI deserve better than fighting for shared resources, decoding a billing console, and waiting on a queue."
         />
 
-        <Reveal className="glass mt-14 overflow-hidden rounded-2xl">
-          <div className="grid grid-cols-3 border-b border-white/5 px-6 py-4 text-sm font-medium">
-            <div className="text-[#9a9384]">Feature</div>
-            <div className="text-center text-amber-400">Comet Compute</div>
-            <div className="text-center text-[#9a9384]">Hyperscalers</div>
+        <Reveal className="mt-20 border border-[color:var(--rule-strong)]">
+          {/* header */}
+          <div className="grid grid-cols-12 border-b border-[color:var(--rule)] bg-ink-raised/40">
+            <div className="col-span-4 px-6 py-4 sm:col-span-4" />
+            <div className="col-span-4 border-l border-[color:var(--rule)] px-6 py-4">
+              <span className="label text-gold">Comet Compute</span>
+            </div>
+            <div className="col-span-4 border-l border-[color:var(--rule)] px-6 py-4">
+              <span className="label">The big clouds</span>
+            </div>
           </div>
+
           {rows.map((row, i) => (
             <div
               key={row.feature}
-              className={`grid grid-cols-3 px-6 py-4 text-sm transition-colors hover:bg-amber-400/[0.03] ${
-                i < rows.length - 1 ? "border-b border-white/5" : ""
+              className={`grid grid-cols-12 ${
+                i !== rows.length - 1 ? "border-b border-[color:var(--rule)]" : ""
               }`}
             >
-              <div className="font-medium">{row.feature}</div>
-              <div className="flex items-center justify-center gap-1.5 text-center text-white">
-                <svg className="h-4 w-4 flex-shrink-0 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                {row.comet}
+              <div className="col-span-4 px-6 py-5">
+                <span className="mono text-xs text-fg-faint">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="mt-1 text-sm text-fg-dim">{row.feature}</div>
               </div>
-              <div className="text-center text-[#9a9384]">{row.others}</div>
+              <div className="col-span-4 flex items-center gap-2 border-l border-[color:var(--rule)] bg-gold/[0.025] px-6 py-5">
+                <span className="mono text-gold">→</span>
+                <span className="text-sm text-fg">{row.comet}</span>
+              </div>
+              <div className="col-span-4 flex items-center gap-2 border-l border-[color:var(--rule)] px-6 py-5">
+                <span className="mono text-fg-faint">×</span>
+                <span className="text-sm text-fg-faint line-through decoration-fg-faint/40">
+                  {row.others}
+                </span>
+              </div>
             </div>
           ))}
         </Reveal>
