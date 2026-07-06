@@ -11,7 +11,7 @@ interface SectionHeaderProps {
 
 /**
  * Editorial section header. Mono index + kicker on one rule line, then a
- * large serif headline. Deliberately left-aligned and asymmetric — the
+ * large serif headline. Deliberately left-aligned and asymmetric - the
  * lede sits in a narrow measure offset from the headline, not centered.
  */
 export default function SectionHeader({

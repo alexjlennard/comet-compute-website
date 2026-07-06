@@ -10,7 +10,7 @@ import { solutionsByGroup } from "@/lib/solutions";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Dedicated GPU infrastructure tailored to your workload — from model training and inference to healthcare, enterprise, and startups.",
+    "Dedicated GPU infrastructure tailored to your workload, from model training and inference to healthcare, enterprise, and startups.",
 };
 
 export default function SolutionsIndex() {
@@ -30,7 +30,7 @@ export default function SolutionsIndex() {
           </h1>
           <p className="measure mt-8 text-lg leading-relaxed text-fg-dim">
             Training frontier models, serving inference at scale, or running
-            clinical AI — we build the dedicated cluster to match.
+            clinical AI. We build the dedicated cluster to match.
           </p>
         </div>
       </section>

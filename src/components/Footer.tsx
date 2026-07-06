@@ -6,7 +6,7 @@ const columns = [
     title: "Platform",
     links: [
       { name: "Dedicated servers", href: "/#platform" },
-      { name: "GPU hardware", href: "/#infrastructure" },
+      { name: "GPU hardware", href: "/#hardware" },
       { name: "Managed stack", href: "/#managed" },
       { name: "Solutions", href: "/solutions" },
     ],

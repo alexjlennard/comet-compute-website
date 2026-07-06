@@ -9,7 +9,7 @@ export default function Metrics() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-paper px-6 py-28 text-paper-ink lg:px-10 lg:py-36">
+    <section id="numbers" className="relative overflow-hidden bg-paper px-6 py-28 text-paper-ink lg:px-10 lg:py-36">
       <div className="mx-auto max-w-[88rem]">
         <div className="flex items-baseline gap-4 border-b border-paper-ink/15 pb-4">
           <span className="mono text-sm" style={{ color: "#9a6a14" }}>

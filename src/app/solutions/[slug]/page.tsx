@@ -68,7 +68,7 @@ export default async function SolutionPage({
                 <span className="mono transition-transform group-hover:translate-x-1">→</span>
               </Link>
               <Link
-                href="/#infrastructure"
+                href="/#hardware"
                 className="link-grow inline-flex items-center gap-2 self-start text-sm text-fg-dim transition-colors hover:text-fg sm:self-auto"
               >
                 <span className="mono text-gold">$</span> view hardware
@@ -150,7 +150,7 @@ export default async function SolutionPage({
               </div>
             </div>
             <Link
-              href="/#infrastructure"
+              href="/#hardware"
               className="link-grow inline-flex flex-shrink-0 items-center gap-2 text-sm text-gold"
             >
               All GPUs

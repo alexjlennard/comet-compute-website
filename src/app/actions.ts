@@ -11,7 +11,7 @@ export async function submitContact(
   _prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
-  // honeypot — bots fill every field, humans never see this one
+  // honeypot - bots fill every field, humans never see this one
   if (formData.get("website")) return { status: "success" };
 
   const name = String(formData.get("name") ?? "").trim();
@@ -49,15 +49,15 @@ export async function submitContact(
         "Comet Compute <onboarding@resend.dev>",
       to: [to],
       reply_to: email,
-      subject: `Cluster proposal request — ${company.replace(/[\r\n]/g, " ")}`,
+      subject: `Cluster proposal request: ${company.replace(/[\r\n]/g, " ")}`,
       text: [
         `Name:     ${name}`,
         `Company:  ${company}`,
         `Email:    ${email}`,
-        `Hardware: ${hardware || "—"}`,
+        `Hardware: ${hardware || "-"}`,
         ``,
         `What they're building:`,
-        message || "—",
+        message || "-",
       ].join("\n"),
     }),
   });

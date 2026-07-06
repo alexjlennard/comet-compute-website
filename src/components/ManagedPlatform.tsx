@@ -27,10 +27,10 @@ export default function ManagedPlatform() {
                   on <span className="serif-italic text-gold">day one.</span>
                 </>
               }
-              lede="Take the keys however you want them: a running platform — managed Kubernetes and Slurm, pre-tuned ML stack, observability — or raw bare metal with root on every node."
+              lede="Take the keys however you want them: a running platform with managed Kubernetes and Slurm, a pre-tuned ML stack, and observability, or raw bare metal with root on every node."
             />
 
-            {/* Terminal — what day one actually looks like */}
+            {/* Terminal - what day one actually looks like */}
             <Reveal delay={80} className="mt-12 border border-[color:var(--rule-strong)] bg-[#070609]">
               <div className="flex items-center justify-between border-b border-[color:var(--rule)] px-4 py-2.5">
                 <span className="mono text-xs text-fg-faint">you@cluster-01 ~</span>
@@ -105,7 +105,7 @@ export default function ManagedPlatform() {
                 </span>
                 <p className="mt-3 text-sm leading-relaxed text-fg-dim">
                   You ship a workload; we run every layer beneath it. Kubernetes,
-                  Slurm, drivers, observability — managed, patched, and tuned.
+                  Slurm, drivers, observability, all managed, patched, and tuned.
                 </p>
               </div>
               <div className="bg-ink p-5">
@@ -114,7 +114,7 @@ export default function ManagedPlatform() {
                 </span>
                 <p className="mt-3 text-sm leading-relaxed text-fg-dim">
                   Root on every node, your stack on our fabric. We keep the
-                  hardware, network, and firmware healthy — the rest is yours.
+                  hardware, network, and firmware healthy. The rest is yours.
                 </p>
               </div>
             </div>

@@ -4,7 +4,7 @@ import "./globals.css";
 
 const REB2B_SNIPPET = `!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QO92DHLEKRN7");`;
 
-// Display — high-contrast editorial serif. Used only for the largest moments.
+// Display - high-contrast editorial serif. Used only for the largest moments.
 const serif = Instrument_Serif({
   variable: "--font-serif",
   subsets: ["latin"],
@@ -12,7 +12,7 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-// Body / UI — humanist grotesque.
+// Body / UI - humanist grotesque.
 const sans = Hanken_Grotesk({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -26,15 +26,15 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Comet Compute — Dedicated GPU infrastructure for AI",
-    template: "%s — Comet Compute",
+    default: "Comet Compute | Dedicated GPU infrastructure for AI",
+    template: "%s | Comet Compute",
   },
   description:
     "Single-tenant NVIDIA clusters, delivered as a managed Kubernetes and Slurm platform or straight bare metal with root. No shared silicon, no metered surprises.",
   openGraph: {
     siteName: "Comet Compute",
     type: "website",
-    title: "Comet Compute — Dedicated GPU infrastructure for AI",
+    title: "Comet Compute | Dedicated GPU infrastructure for AI",
     description:
       "Single-tenant NVIDIA clusters, delivered as a managed Kubernetes and Slurm platform or straight bare metal with root. No shared silicon, no metered surprises.",
   },

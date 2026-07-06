@@ -39,7 +39,7 @@ export const solutions: Solution[] = [
       {
         title: "Multi-node NVLink fabric",
         description:
-          "Non-blocking XDR InfiniBand at up to 800 Gb/s per GPU, with NVLink inside the rack — gradients keep moving across thousands of GPUs at near-linear scaling efficiency.",
+          "Non-blocking XDR InfiniBand at up to 800 Gb/s per GPU, with NVLink inside the rack. Gradients keep moving across thousands of GPUs at near-linear scaling efficiency.",
       },
       {
         title: "Reproducible runs",
@@ -49,12 +49,12 @@ export const solutions: Solution[] = [
       {
         title: "Checkpoint-grade storage",
         description:
-          "DDN EXAScaler parallel storage with GPUDirect — checkpoints write fast and restore faster, so a failed run costs you minutes, not a day of GPU hours.",
+          "DDN EXAScaler parallel storage with GPUDirect. Checkpoints write fast and restore faster, so a failed run costs you minutes, not a day of GPU hours.",
       },
       {
         title: "Reserved capacity",
         description:
-          "Your GPUs are yours for the whole campaign, with hot spares standing by — a failed node or a firmware update never stalls the run.",
+          "Your GPUs are yours for the whole campaign, with hot spares standing by, so a failed node or a firmware update never stalls the run.",
       },
     ],
     stats: [
@@ -73,7 +73,7 @@ export const solutions: Solution[] = [
     eyebrow: "Use Case",
     headline: "Production inference with guaranteed latency",
     subhead:
-      "Serve production traffic on hardware nobody else can touch — hot spares on standby, throughput that holds at p99, and capacity that scales with a launch instead of buckling under it.",
+      "Serve production traffic on hardware nobody else can touch: hot spares on standby, throughput that holds at p99, and capacity that scales with a launch instead of buckling under it.",
     image: "/assets/server-dgx.png",
     capabilities: [
       {
@@ -94,7 +94,7 @@ export const solutions: Solution[] = [
       {
         title: "Bring your own stack",
         description:
-          "Run vLLM, TensorRT-LLM, Triton, or your own serving framework — we give you the bare metal, you keep full control.",
+          "Run vLLM, TensorRT-LLM, Triton, or your own serving framework. We give you the bare metal, you keep full control.",
       },
     ],
     stats: [
@@ -113,7 +113,7 @@ export const solutions: Solution[] = [
     eyebrow: "Use Case",
     headline: "Fine-tune and align models on right-sized clusters",
     subhead:
-      "From LoRA adapters to full post-training and RLHF — exactly the GPU footprint your job needs, without paying for a hyperscaler's idle overhead.",
+      "From LoRA adapters to full post-training and RLHF: exactly the GPU footprint your job needs, without paying for a hyperscaler's idle overhead.",
     image: "/assets/chip-blackwell.png",
     capabilities: [
       {
@@ -148,7 +148,7 @@ export const solutions: Solution[] = [
     eyebrow: "Industry",
     headline: "Private AI compute for clinical environments",
     subhead:
-      "HIPAA-compliant, single-tenant GPU infrastructure for medical imaging, drug discovery, and clinical decision support — backed by the NVIDIA Clara stack and built so your compliance team can prove it.",
+      "HIPAA-compliant, single-tenant GPU infrastructure for medical imaging, drug discovery, and clinical decision support, backed by the NVIDIA Clara stack and built so your compliance team can prove it.",
     image: "/assets/healthcare.jpg",
     capabilities: [
       {
@@ -188,13 +188,13 @@ export const solutions: Solution[] = [
     eyebrow: "Industry",
     headline: "From your first GPU to your first cluster",
     subhead:
-      "Start on on-demand GPUs in hours, then graduate into a reserved private cluster as your workloads grow — with pricing and support built for teams that don't have an infra org yet.",
+      "Start on on-demand GPUs in hours, then graduate into a reserved private cluster as your workloads grow, with pricing and support built for teams that don't have an infra org yet.",
     image: "/assets/rack-tall.png",
     capabilities: [
       {
         title: "Start on-demand",
         description:
-          "Get going in hours with on-demand GPU access, high-speed storage, and caching — no long procurement cycle.",
+          "Get going in hours with on-demand GPU access, high-speed storage, and caching. No long procurement cycle.",
       },
       {
         title: "Graduate to dedicated",
@@ -213,7 +213,7 @@ export const solutions: Solution[] = [
       { value: "Hands-on", label: "Solutions support" },
     ],
     relatedGpus: ["NVIDIA H100", "NVIDIA H200"],
-    seo: "Flexible GPU infrastructure for startups and researchers — start on-demand and graduate into dedicated private clusters.",
+    seo: "Flexible GPU infrastructure for startups and researchers: start on-demand and graduate into dedicated private clusters.",
   },
   {
     slug: "enterprise",
@@ -223,7 +223,7 @@ export const solutions: Solution[] = [
     eyebrow: "Industry",
     headline: "AI infrastructure your security team will sign off on",
     subhead:
-      "Isolated GPU infrastructure with the security posture, predictable economics, and direct support that procurement and security reviews actually approve — the first time through.",
+      "Isolated GPU infrastructure with the security posture, predictable economics, and direct support that procurement and security reviews actually approve, the first time through.",
     image: "/assets/server-dgx.png",
     capabilities: [
       {
@@ -234,7 +234,7 @@ export const solutions: Solution[] = [
       {
         title: "Predictable economics",
         description:
-          "Fixed monthly pricing with no surprise egress fees or complex metering — built for annual budgeting.",
+          "Fixed monthly pricing with no surprise egress fees or complex metering, built for annual budgeting.",
       },
       {
         title: "Security & compliance",
@@ -244,7 +244,7 @@ export const solutions: Solution[] = [
       {
         title: "Dedicated solutions engineer",
         description:
-          "A named engineer who knows your deployment — a phone that rings, not a portal that queues.",
+          "A named engineer who knows your deployment: a phone that rings, not a portal that queues.",
       },
     ],
     stats: [

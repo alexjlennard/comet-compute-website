@@ -27,7 +27,7 @@ export default function Solutions() {
               <span className="serif-italic text-gold">your</span> workload.
             </>
           }
-          lede="Training a frontier model or serving millions of inference requests — the cluster gets built to match, not the other way around."
+          lede="Training a frontier model or serving millions of inference requests: the cluster gets built to match, not the other way around."
         />
 
         <div className="mt-20 grid gap-px border border-[color:var(--rule)] bg-[color:var(--rule)] lg:grid-cols-3">
@@ -74,7 +74,7 @@ export default function Solutions() {
           ))}
         </div>
 
-        {/* Healthcare spotlight — wide editorial split */}
+        {/* Healthcare spotlight - wide editorial split */}
         {healthcare && (
           <Reveal className="mt-px grid border-x border-b border-[color:var(--rule)] lg:grid-cols-2">
             <div className="relative h-72 w-full overflow-hidden lg:h-auto lg:min-h-[420px]">
@@ -94,7 +94,7 @@ export default function Solutions() {
               </h3>
               <p className="mt-5 leading-relaxed text-fg-dim">
                 HIPAA-compliant, single-tenant GPU infrastructure for medical
-                imaging, oncology research, and clinical decision support —
+                imaging, oncology research, and clinical decision support,
                 backed by the NVIDIA Clara stack, reaching a network of 50,000+
                 clinics and medical offices.
               </p>

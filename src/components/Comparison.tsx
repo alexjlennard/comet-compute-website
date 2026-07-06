@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader";
 export default function Comparison() {
   const rows = [
     { feature: "Tenancy", comet: "Fully dedicated hardware", others: "Shared, multi-tenant" },
-    { feature: "Deployment", comet: "Managed stack or bare metal — your call", others: "One model fits all" },
+    { feature: "Deployment", comet: "Managed stack or bare metal, your call", others: "One model fits all" },
     { feature: "Pricing", comet: "One fixed monthly number", others: "Metered billing maze" },
     { feature: "Capacity", comet: "Guaranteed, reserved", others: "Waitlists & spot evictions" },
     { feature: "Support", comet: "A named engineer", others: "A ticket queue" },

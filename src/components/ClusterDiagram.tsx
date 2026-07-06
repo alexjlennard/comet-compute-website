@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Multi-scale GPU visualization — a "Powers of Ten" for silicon.
+ * Multi-scale GPU visualization - a "Powers of Ten" for silicon.
  *
  * A single distributed training step runs on ONE global clock:
  *
@@ -11,7 +11,7 @@ import { useEffect, useRef } from "react";
  *   BROADCAST   result fans out  ·  SYNC     settle, next step
  *
  * The camera auto-cycles through four altitudes of the real hardware, and each
- * level visualizes its slice of that same step — so the whole thing reads as
+ * level visualizes its slice of that same step - so the whole thing reads as
  * one coherent machine seen at four depths, not four separate animations:
  *
  *   L-1 DATACENTER   a hall of racks; your one rack lit gold, neighbors dark
@@ -27,7 +27,7 @@ import { useEffect, useRef } from "react";
  * Pure Canvas 2D, zero dependencies. Respects prefers-reduced-motion.
  */
 
-// shared virtual frame — all levels draw into this, so morphs line up
+// shared virtual frame - all levels draw into this, so morphs line up
 const W = 520;
 const H = 560;
 
@@ -99,7 +99,7 @@ type Sim = {
 };
 
 // =====================================================================
-// FABRIC (L0) — the original NVL72 view, ported
+// FABRIC (L0) - the original NVL72 view, ported
 // =====================================================================
 const SPINE = W / 2;
 const TOP = 56;
@@ -275,10 +275,10 @@ export default function ClusterDiagram() {
     };
 
     // =================================================================
-    // LEVEL RENDERERS  — each draws into the full W×H frame, returns Sim
+    // LEVEL RENDERERS  - each draws into the full W×H frame, returns Sim
     // =================================================================
 
-    // ---- L-1 DATACENTER — the Abu Dhabi hall: 64× GB300 NVL72 racks ----
+    // ---- L-1 DATACENTER - the Abu Dhabi hall: 64× GB300 NVL72 racks ----
     const DC_COLS = 8;
     const DC_ROWS = 8;
     const DC_OWNED = 27; // index of the lit, owned rack
@@ -349,7 +349,7 @@ export default function ClusterDiagram() {
       }
       ctx.textAlign = "left";
 
-      annotate("FIG.00 — FACILITY", "64 RACK · GB300 NVL72");
+      annotate("FIG.00 · FACILITY", "64 RACK · GB300 NVL72");
       return {
         title: "Hall · datacenter",
         metrics: [
@@ -484,7 +484,7 @@ export default function ClusterDiagram() {
       ctx.fillText("130 TB/s", SPINE, H / 2 + 24);
       ctx.textAlign = "left";
 
-      annotate("FIG.01 — NVL72 FABRIC", "72 GPU · 18 TRAY · 1 DOMAIN");
+      annotate("FIG.01 · NVL72 FABRIC", "72 GPU · 18 TRAY · 1 DOMAIN");
 
       const util = utilSum / TRAYS;
       const fabric = 6 + (inflight / 18) * 124;
@@ -500,7 +500,7 @@ export default function ClusterDiagram() {
       };
     }
 
-    // ---- L1 PACKAGE — one Blackwell GPU: die + 8 HBM stacks ----
+    // ---- L1 PACKAGE - one Blackwell GPU: die + 8 HBM stacks ----
     const PKG = { x: 110, y: 120, w: 300, h: 320 };
     const DIE = { x: PKG.x + 70, y: PKG.y + 60, w: 160, h: 200 };
     function drawPackage(step: Step): Sim {
@@ -511,7 +511,7 @@ export default function ClusterDiagram() {
       ctx.fillRect(PKG.x, PKG.y, PKG.w, PKG.h);
       ctx.strokeRect(PKG.x, PKG.y, PKG.w, PKG.h);
 
-      // HBM stacks: 4 left, 4 right of the die — mirrored about the die centre so
+      // HBM stacks: 4 left, 4 right of the die - mirrored about the die centre so
       // both columns sit the same distance from the die AND from the package edge.
       const stackH = 38;
       const gap = 8;
@@ -570,7 +570,7 @@ export default function ClusterDiagram() {
       ctx.moveTo(DIE.x + DIE.w / 2, DIE.y);
       ctx.lineTo(DIE.x + DIE.w / 2, DIE.y + DIE.h);
       ctx.stroke();
-      // die compute shimmer — grid centred within the die in both axes
+      // die compute shimmer - grid centred within the die in both axes
       const dieHeat = step.phase === "COMPUTE" ? 0.9 : step.busy * 0.5;
       const cell = 16;
       const cstep = 23; // cell + gap
@@ -596,7 +596,7 @@ export default function ClusterDiagram() {
       ctx.fillText("8× HBM3e · 288 GB", DIE.x + DIE.w / 2, PKG.y + PKG.h - 10);
       ctx.textAlign = "left";
 
-      annotate("FIG.02 — BLACKWELL ULTRA PACKAGE", "1 GPU · 8 STACK · 288 GB");
+      annotate("FIG.02 · BLACKWELL ULTRA PACKAGE", "1 GPU · 8 STACK · 288 GB");
 
       const bw = step.phase === "COMPUTE" ? 7.4 + step.busy * 0.6 : 2 + step.busy * 3;
       return {
@@ -611,13 +611,13 @@ export default function ClusterDiagram() {
       };
     }
 
-    // ---- L2 DIE — SM grid, matmul tile sweeps the tensor cores ----
+    // ---- L2 DIE - SM grid, matmul tile sweeps the tensor cores ----
     const GRID = { x: 70, y: 80, w: W - 140, h: H - 200 };
     function drawDie(step: Step): Sim {
       const cw = GRID.w / SM_COLS;
       const ch = GRID.h / SM_ROWS;
 
-      // Systolic matmul wavefronts sweep the grid CONTINUOUSLY — at this zoom the
+      // Systolic matmul wavefronts sweep the grid CONTINUOUSLY - at this zoom the
       // tensor cores never idle. The diagonal `span` is 0..(SM_COLS+SM_ROWS); we
       // run an integer number of passes per training cycle so the wrap at cycle end
       // is seamless, and measure distance toroidally so a front re-enters from the
@@ -672,7 +672,7 @@ export default function ClusterDiagram() {
       ctx.lineWidth = 1.2;
       ctx.strokeRect(GRID.x, GRID.y, GRID.w, GRID.h);
 
-      annotate("FIG.03 — GB-DIE · SM ARRAY", `${SMS} SM · TENSOR CORE`);
+      annotate("FIG.03 · GB-DIE · SM ARRAY", `${SMS} SM · TENSOR CORE`);
 
       const occ = activeCount / SMS;
       return {
@@ -699,7 +699,7 @@ export default function ClusterDiagram() {
     }
 
     // =================================================================
-    // CAMERA — ordered scenes, pendulum loop, shared-element morphs
+    // CAMERA - ordered scenes, pendulum loop, shared-element morphs
     // =================================================================
     type LevelId = "dc" | "fabric" | "package" | "die";
     const render: Record<LevelId, (s: Step) => Sim> = {
@@ -710,8 +710,8 @@ export default function ClusterDiagram() {
     };
     // The shared element between two adjacent levels is a pair of rectangles that
     // must coincide on screen throughout the morph:
-    //   focusOf(parent)  — the element on the PARENT you dive into
-    //   contentOf(child) — the bounding box of the CHILD's real structure
+    //   focusOf(parent)  - the element on the PARENT you dive into
+    //   contentOf(child) - the bounding box of the CHILD's real structure
     // We lock contentOf(child) ONTO focusOf(parent) (not the child's full frame),
     // so the parent's focus border literally becomes the child's structural border:
     // rack edge → fabric span, GPU cell → package substrate, die outline → SM grid.
@@ -762,7 +762,7 @@ export default function ClusterDiagram() {
     // The level renderers set globalAlpha internally (and reset to 1), so a simple
     // outer globalAlpha can't fade a whole level. When alpha < 1 we therefore
     // render the level OPAQUE into an offscreen buffer, then blit that buffer onto
-    // the main canvas at the requested alpha — a true per-layer fade. Both layers
+    // the main canvas at the requested alpha - a true per-layer fade. Both layers
     // of a transition share the same anchor+scale, so they stay spatially locked.
     const drawAnchored = (
       id: LevelId,
@@ -883,7 +883,7 @@ export default function ClusterDiagram() {
         // ---- transition: dive between adjacent levels ----
         // A naive "zoom the parent until its focus fills the frame" needs ~40×
         // and shatters the parent into giant slabs. Instead we DECOUPLE:
-        //   • the parent only drifts gently (≤1.5×) toward the focus, then fades —
+        //   • the parent only drifts gently (≤1.5×) toward the focus, then fades -
         //     so it always stays a recognizable whole, never oversized debris;
         //   • a lock-frame travels from the focus element out to the child's full
         //     content box;
@@ -928,7 +928,7 @@ export default function ClusterDiagram() {
 
         // Porthole vignette sized to the FULL frame diagonal so the parent's
         // periphery is darkened to the page colour everywhere outside the focus
-        // region — we look THROUGH the aperture only. Ramped in near zp=0 (so it
+        // region - we look THROUGH the aperture only. Ramped in near zp=0 (so it
         // never snaps against the dwell frame) and held a touch past the parent
         // so the aperture beat stays clean before the child fills it.
         const vig = clamp01(zp / 0.12) * clamp01((0.45 - zp) / 0.28);
@@ -946,7 +946,7 @@ export default function ClusterDiagram() {
 
         const childSim = drawAnchored(childId, step, Cc, lfC, sc, childA);
 
-        // The through-line frame — brightest mid-flight, gone at the settled ends.
+        // The through-line frame - brightest mid-flight, gone at the settled ends.
         const frameVis = clamp01(1 - Math.abs(zp - 0.5) * 2.2);
         if (frameVis > 0.01) {
           ctx.save();
@@ -985,7 +985,7 @@ export default function ClusterDiagram() {
       const labs = [lab0, lab1, lab2, lab3];
       const vals = [val0, val1, val2, val3];
       ["util", "fabric", "power", "temp"].forEach((l, i) => setText(labs[i].current, l));
-      vals.forEach((v) => setText(v.current, "—"));
+      vals.forEach((v) => setText(v.current, "-"));
       setText(phaseRef.current, "READY");
       return () => ro.disconnect();
     }
@@ -1058,10 +1058,10 @@ function Stat({
   return (
     <div className="flex flex-col gap-1">
       <span ref={labelRef} className="label text-[0.6rem]">
-        —
+        -
       </span>
       <span ref={valueRef} className="mono text-sm text-gold tabular-nums transition-opacity">
-        —
+        -
       </span>
     </div>
   );

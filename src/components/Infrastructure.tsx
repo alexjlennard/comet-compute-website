@@ -7,7 +7,7 @@ export default function Infrastructure() {
     name: "GB300 NVL72",
     tag: "FLAGSHIP · BLACKWELL ULTRA",
     description:
-      "Rack-scale system for the largest training and inference runs. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single coherent accelerator — we commission them up to 64 racks at a time.",
+      "Rack-scale system for the largest training and inference runs. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single coherent accelerator. We commission them up to 64 racks at a time.",
     image: "/assets/cluster-nvl72.png",
     specs: [
       { k: "GPUs", v: "72 × Blackwell Ultra" },
@@ -18,7 +18,7 @@ export default function Infrastructure() {
   };
 
   const lineup = [
-    { name: "Vera Rubin NVL144", arch: "Rubin", memory: "288 GB HBM4", fabric: "NVLink 6", perf: "reserving" },
+    { name: "Vera Rubin", arch: "Rubin", memory: "288 GB HBM4", fabric: "NVLink 6", perf: "reserving" },
     { name: "GB200 NVL72", arch: "Grace Blackwell", memory: "up to 13.5 TB", fabric: "NVLink 5", perf: "1.4 EFLOPS" },
     { name: "HGX B300", arch: "Blackwell Ultra", memory: "2.3 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
     { name: "HGX B200", arch: "Blackwell", memory: "1.4 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
@@ -27,7 +27,7 @@ export default function Infrastructure() {
   ];
 
   return (
-    <section id="infrastructure" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
+    <section id="hardware" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
       <div className="mx-auto max-w-[88rem]">
         <SectionHeader
           index="04"
@@ -39,10 +39,10 @@ export default function Infrastructure() {
               ready to <span className="serif-italic text-gold">reserve.</span>
             </>
           }
-          lede="Blackwell Ultra rack-scale systems and proven Hopper nodes, pre-validated to NVIDIA's NCP reference architecture — with Vera Rubin deployments already in flight."
+          lede="Blackwell Ultra rack-scale systems and proven Hopper nodes, pre-validated to NVIDIA's NCP reference architecture, with Vera Rubin deployments already in flight."
         />
 
-        {/* Flagship — asymmetric split, image bleeds left */}
+        {/* Flagship - asymmetric split, image bleeds left */}
         <Reveal className="mt-20 grid border border-[color:var(--rule-strong)] lg:grid-cols-5">
           <div className="relative min-h-[320px] overflow-hidden bg-black lg:col-span-3">
             <Image

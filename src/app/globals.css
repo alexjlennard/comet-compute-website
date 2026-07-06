@@ -46,6 +46,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* body-level overflow-x doesn't stop iOS Safari horizontal panning —
+     the root element is the scroller, so clip here */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -53,7 +57,7 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-feature-settings: "ss01", "cv01";
-  overflow-x: hidden;
+  overflow-x: clip;
   /* faint vertical seam down the right gutter to imply a layout grid */
   text-rendering: optimizeLegibility;
 }

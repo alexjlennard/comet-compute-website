@@ -16,12 +16,12 @@ const features = [
   {
     n: "03",
     title: "800G interconnect",
-    body: "Non-blocking Quantum-3 XDR InfiniBand at up to 800 Gb/s per GPU, plus NVLink inside the node — gradients move at line rate.",
+    body: "Non-blocking Quantum-3 XDR InfiniBand at up to 800 Gb/s per GPU, plus NVLink inside the node. Gradients move at line rate.",
   },
   {
     n: "04",
     title: "A date, not a waitlist",
-    body: "Real dedicated capacity takes a quarter or more to allocate and commission — anyone promising next week is reselling spare racks. We commit to a delivery date up front, in writing, and hit it.",
+    body: "Real dedicated capacity takes a quarter or more to allocate and commission. Anyone promising next week is reselling spare racks. We commit to a delivery date up front, in writing, and hit it.",
   },
   {
     n: "05",
@@ -49,10 +49,10 @@ export default function Platform() {
               not a <span className="serif-italic text-gold">slice</span> of it.
             </>
           }
-          lede="GPU clusters engineered end to end for training and inference — not assembled from whatever the hyperscaler had left over."
+          lede="GPU clusters engineered end to end for training and inference, not assembled from whatever the hyperscaler had left over."
         />
 
-        {/* Ledger grid — rules instead of cards, asymmetric first row */}
+        {/* Ledger grid - rules instead of cards, asymmetric first row */}
         <div className="mt-20 grid grid-cols-1 border-t border-[color:var(--rule)] md:grid-cols-3">
           {features.map((f, i) => (
             <Reveal

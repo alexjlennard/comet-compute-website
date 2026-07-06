@@ -5,10 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { solutionsByGroup } from "@/lib/solutions";
 
-const navigation = [
+// mirrors the homepage section order: 01 platform, 02 managed,
+// 03 solutions (dropdown), 04 hardware, 06 why
+const navBefore = [
   { name: "Platform", href: "/#platform" },
-  { name: "Hardware", href: "/#infrastructure" },
   { name: "Managed", href: "/#managed" },
+];
+const navAfter = [
+  { name: "Hardware", href: "/#hardware" },
   { name: "Why Comet", href: "/#why" },
 ];
 
@@ -57,6 +61,16 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-9 md:flex">
+          {navBefore.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="mono text-xs uppercase tracking-[0.12em] text-fg-dim transition-colors hover:text-fg"
+            >
+              {item.name}
+            </Link>
+          ))}
+
           {/* Solutions menu */}
           <div
             className="relative"
@@ -64,7 +78,7 @@ export default function Navbar() {
             onMouseLeave={() => setSolutionsOpen(false)}
           >
             <Link
-              href="/solutions"
+              href="/#solutions"
               className={`mono text-xs uppercase tracking-[0.12em] transition-colors ${
                 solutionsOpen ? "text-fg" : "text-fg-dim hover:text-fg"
               }`}
@@ -123,7 +137,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {navigation.map((item) => (
+          {navAfter.map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -161,6 +175,16 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="max-h-[80vh] overflow-y-auto border-t border-[color:var(--rule)] bg-ink/97 backdrop-blur-md md:hidden">
           <div className="space-y-1 px-6 py-5">
+            {navBefore.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block py-2 text-sm text-fg-dim transition-colors hover:text-fg"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
             <button
               className="flex w-full items-center justify-between py-2 text-sm text-fg"
               onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
@@ -188,7 +212,7 @@ export default function Navbar() {
               </div>
             )}
 
-            {navigation.map((item) => (
+            {navAfter.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}

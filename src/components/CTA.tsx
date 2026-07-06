@@ -31,13 +31,13 @@ export default function CTA() {
             <p className="measure mt-8 text-lg leading-relaxed text-fg-dim">
               Tell us what you&apos;re building. We&apos;ll scope the cluster, quote a
               fixed monthly number, and commit to a commissioning date in
-              writing. Dedicated capacity takes a quarter or more to stand up —
-              the difference with us is you&apos;ll know exactly when yours arrives.
+              writing. Dedicated capacity takes a quarter or more to stand up.
+              The difference with us is that you&apos;ll know exactly when yours arrives.
             </p>
             <ul className="mt-10 space-y-3 border-t border-[color:var(--rule)] pt-6">
               {[
                 "A cluster proposal scoped to your workload",
-                "One fixed monthly price — no egress, no metering",
+                "One fixed monthly price, no egress or metering",
                 "A direct line to the engineers who racked it",
               ].map((item) => (
                 <li key={item} className="flex items-baseline gap-3 text-sm text-fg-dim">
@@ -101,7 +101,7 @@ export default function CTA() {
                     <textarea
                       name="message"
                       rows={3}
-                      placeholder="Briefly — model, scale, timeline…"
+                      placeholder="Briefly: model, scale, timeline…"
                       className="w-full resize-none border border-[color:var(--rule-strong)] bg-ink px-3.5 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-gold"
                     />
                   </div>
