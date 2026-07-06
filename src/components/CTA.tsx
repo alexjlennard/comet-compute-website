@@ -78,18 +78,21 @@ export default function CTA() {
                   </div>
                   <Field label="Work email" name="email" type="email" placeholder="jane@acme.ai" required />
                   <div>
-                    <label className="label mb-2 block">GPU footprint</label>
+                    <label className="label mb-2 block">Hardware</label>
                     <select
-                      name="gpus"
+                      name="hardware"
                       className="w-full border border-[color:var(--rule-strong)] bg-ink px-3.5 py-3 text-sm text-fg outline-none transition-colors focus:border-gold"
                       defaultValue=""
                       required
                     >
-                      <option value="" disabled>Select an estimate</option>
-                      <option>8–32 GPUs</option>
-                      <option>32–128 GPUs</option>
-                      <option>128–512 GPUs</option>
-                      <option>512+ GPUs</option>
+                      <option value="" disabled>Select hardware</option>
+                      <option>NVIDIA HGX B300</option>
+                      <option>NVIDIA GB300 NVL72</option>
+                      <option>NVIDIA Vera Rubin NVL144</option>
+                      <option>NVIDIA GB200 NVL72</option>
+                      <option>NVIDIA HGX B200</option>
+                      <option>NVIDIA H200</option>
+                      <option>NVIDIA H100</option>
                       <option>Not sure yet</option>
                     </select>
                   </div>

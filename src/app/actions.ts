@@ -17,7 +17,7 @@ export async function submitContact(
   const name = String(formData.get("name") ?? "").trim();
   const company = String(formData.get("company") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
-  const gpus = String(formData.get("gpus") ?? "").trim();
+  const hardware = String(formData.get("hardware") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
   if (!name || !company || !EMAIL_RE.test(email)) {
@@ -54,7 +54,7 @@ export async function submitContact(
         `Name:     ${name}`,
         `Company:  ${company}`,
         `Email:    ${email}`,
-        `GPUs:     ${gpus || "—"}`,
+        `Hardware: ${hardware || "—"}`,
         ``,
         `What they're building:`,
         message || "—",
