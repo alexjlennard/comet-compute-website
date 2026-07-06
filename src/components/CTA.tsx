@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { submitContact, type ContactState } from "@/app/actions";
 import Reveal from "./Reveal";
 
+const initialState: ContactState = { status: "idle" };
+
 export default function CTA() {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(
+    submitContact,
+    initialState
+  );
 
   return (
     <section id="contact" className="relative border-t border-[color:var(--rule)] px-6 py-28 lg:px-10 lg:py-40">
@@ -44,7 +50,7 @@ export default function CTA() {
 
           <Reveal delay={100}>
             <div className="border border-[color:var(--rule-strong)] bg-ink-raised/40 p-8 lg:p-10">
-              {submitted ? (
+              {state.status === "success" ? (
                 <div className="flex min-h-[400px] flex-col items-start justify-center">
                   <span className="mono text-gold">→ received</span>
                   <h3 className="serif mt-4 text-3xl text-fg">
@@ -56,14 +62,16 @@ export default function CTA() {
                   </p>
                 </div>
               ) : (
-                <form
-                  className="space-y-5"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                >
+                <form className="space-y-5" action={formAction}>
                   <p className="label">Request a proposal</p>
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
+                  />
                   <div className="grid grid-cols-2 gap-5">
                     <Field label="Name" name="name" placeholder="Jane Doe" required />
                     <Field label="Company" name="company" placeholder="Acme AI" required />
@@ -96,11 +104,17 @@ export default function CTA() {
                   </div>
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-2.5 bg-gold px-6 py-3.5 text-sm font-semibold text-[#0a0805] transition-colors hover:bg-gold-bright"
+                    disabled={pending}
+                    className="group flex w-full items-center justify-center gap-2.5 bg-gold px-6 py-3.5 text-sm font-semibold text-[#0a0805] transition-colors hover:bg-gold-bright disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Send it
+                    {pending ? "Sending…" : "Send it"}
                     <span className="mono transition-transform group-hover:translate-x-1">→</span>
                   </button>
+                  {state.status === "error" && (
+                    <p aria-live="polite" className="text-center text-xs text-red-400">
+                      {state.message}
+                    </p>
+                  )}
                   <p className="mono text-center text-xs text-fg-faint">
                     No commitment. Reply within one business day.
                   </p>
