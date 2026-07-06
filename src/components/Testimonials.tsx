@@ -5,24 +5,21 @@ export default function Testimonials() {
   const quotes = [
     {
       quote:
-        "Comet got us a dedicated GB300 cluster while we'd been stuck on a hyperscaler waitlist for months. The difference on multi-node training was night and day.",
-      name: "Dr. Sarah Chen",
-      title: "VP, ML Infrastructure",
-      company: "Frontier Health AI",
+        "Comet got us a dedicated GB300 cluster while we were still sitting on a hyperscaler waitlist. Multi-node training just worked, from the first run.",
+      name: "VP, ML Infrastructure",
+      title: "Healthcare AI company",
     },
     {
       quote:
         "Single-tenant hardware means our runs are perfectly reproducible. No noisy neighbors, no surprise throttling. The fixed monthly cost made budgeting trivial.",
-      name: "Marcus Webb",
-      title: "Co-founder & CTO",
-      company: "Vellum Labs",
+      name: "Co-founder & CTO",
+      title: "AI startup",
     },
     {
       quote:
         "Their team understands HIPAA at a depth no cloud provider matched. The BAA was signed before we finished scoping. That's why our clinical workloads moved over.",
-      name: "Priya Nair",
-      title: "Head of Engineering",
-      company: "Oncos Diagnostics",
+      name: "Head of Engineering",
+      title: "Clinical diagnostics company",
     },
   ];
 
@@ -55,9 +52,7 @@ export default function Testimonials() {
               </blockquote>
               <figcaption className="mt-10 border-t border-[color:var(--rule)] pt-5">
                 <div className="text-sm text-fg">{q.name}</div>
-                <div className="mono mt-1 text-xs text-fg-faint">
-                  {q.title} · {q.company}
-                </div>
+                <div className="mono mt-1 text-xs text-fg-faint">{q.title}</div>
               </figcaption>
             </Reveal>
           ))}

@@ -5,7 +5,7 @@ export default function Certifications() {
     { label: "SOC 2 Type II", desc: "Audited security controls" },
     { label: "HIPAA", desc: "Healthcare-ready · BAA available" },
     { label: "ISO 27001", desc: "Information security management" },
-    { label: "99.9% SLA", desc: "Contractual uptime guarantee" },
+    { label: "Hot Spares", desc: "Failures and updates never cost capacity" },
   ];
 
   return (

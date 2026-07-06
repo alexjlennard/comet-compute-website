@@ -2,10 +2,10 @@ import Reveal from "./Reveal";
 
 export default function Metrics() {
   const metrics = [
-    { value: "12k+", label: "GPUs under management", sub: "owned and partner facilities" },
-    { value: "99.9%", label: "Measured uptime", sub: "trailing 12-month average" },
+    { value: "9,552", label: "GPUs deployed", sub: "estimated by end of 2026" },
+    { value: "84 PB", label: "NVMe storage deployed", sub: "DDN EXAScaler · Lustre" },
+    { value: "800G", label: "Per-GPU fabric", sub: "non-blocking Quantum-3 XDR" },
     { value: "50k+", label: "Healthcare endpoints", sub: "clinics and offices reached" },
-    { value: "400G", label: "Node interconnect", sub: "InfiniBand and NVLink fabric" },
   ];
 
   return (

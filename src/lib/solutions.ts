@@ -31,15 +31,15 @@ export const solutions: Solution[] = [
     name: "AI Model Training",
     menuDescription: "Train foundation models on dedicated multi-node clusters",
     eyebrow: "Use Case",
-    headline: "Train frontier models on dedicated GPU clusters",
+    headline: "Train frontier models without sharing the fabric",
     subhead:
-      "Reserve single-tenant multi-node clusters with high-speed interconnects purpose-built for large-scale distributed training. No noisy neighbors, no preemption, no surprises.",
+      "Multi-node clusters reserved for you alone, with the interconnect distributed training actually needs. No preemption, no spot evictions, nobody else's all-reduce in your fabric.",
     image: "/assets/interconnect-fabric.jpg",
     capabilities: [
       {
         title: "Multi-node NVLink fabric",
         description:
-          "400Gb/s InfiniBand and NVLink connectivity keeps gradients flowing across thousands of GPUs with near-linear scaling efficiency.",
+          "Non-blocking XDR InfiniBand at up to 800 Gb/s per GPU, with NVLink inside the rack — gradients keep moving across thousands of GPUs at near-linear scaling efficiency.",
       },
       {
         title: "Reproducible runs",
@@ -49,17 +49,17 @@ export const solutions: Solution[] = [
       {
         title: "Checkpoint-grade storage",
         description:
-          "High-throughput parallel storage tiers keep your checkpoints fast to write and fast to restore, minimizing wasted GPU hours.",
+          "DDN EXAScaler parallel storage with GPUDirect — checkpoints write fast and restore faster, so a failed run costs you minutes, not a day of GPU hours.",
       },
       {
         title: "Reserved capacity",
         description:
-          "Guaranteed access to the GPUs you need for the full duration of your training campaign — no spot interruptions.",
+          "Your GPUs are yours for the whole campaign, with hot spares standing by — a failed node or a firmware update never stalls the run.",
       },
     ],
     stats: [
-      { value: "400Gb/s", label: "Node interconnect" },
-      { value: "Near-linear", label: "Scaling efficiency" },
+      { value: "800 Gb/s", label: "Per-GPU fabric" },
+      { value: "0", label: "Spot evictions" },
       { value: "100%", label: "Dedicated hardware" },
     ],
     relatedGpus: ["NVIDIA GB300 NVL72", "NVIDIA GB200 NVL72"],
@@ -73,7 +73,7 @@ export const solutions: Solution[] = [
     eyebrow: "Use Case",
     headline: "Production inference with guaranteed latency",
     subhead:
-      "Deploy inference endpoints on dedicated hardware with contractual latency SLAs, predictable throughput, and capacity that scales with your traffic.",
+      "Serve production traffic on hardware nobody else can touch — hot spares on standby, throughput that holds at p99, and capacity that scales with a launch instead of buckling under it.",
     image: "/assets/server-dgx.png",
     capabilities: [
       {
@@ -98,12 +98,12 @@ export const solutions: Solution[] = [
       },
     ],
     stats: [
-      { value: "99.9%", label: "Uptime SLA" },
-      { value: "Dedicated", label: "Serving hardware" },
+      { value: "N+1", label: "Hot spare nodes" },
+      { value: "100%", label: "Dedicated GPUs" },
       { value: "24/7", label: "Expert support" },
     ],
     relatedGpus: ["NVIDIA HGX B300", "NVIDIA H200"],
-    seo: "Dedicated GPU infrastructure for low-latency AI inference at scale with guaranteed throughput and uptime SLAs.",
+    seo: "Dedicated GPU infrastructure for low-latency AI inference at scale with guaranteed throughput and hot-spare resilience.",
   },
   {
     slug: "fine-tuning",
@@ -113,7 +113,7 @@ export const solutions: Solution[] = [
     eyebrow: "Use Case",
     headline: "Fine-tune and align models on right-sized clusters",
     subhead:
-      "From LoRA adapters to full post-training and RLHF, get exactly the GPU footprint your job needs — without paying for a hyperscaler's idle overhead.",
+      "From LoRA adapters to full post-training and RLHF — exactly the GPU footprint your job needs, without paying for a hyperscaler's idle overhead.",
     image: "/assets/chip-blackwell.png",
     capabilities: [
       {
@@ -124,7 +124,7 @@ export const solutions: Solution[] = [
       {
         title: "Fast iteration",
         description:
-          "Dedicated, always-on hardware means no queue waits between experiments — iterate on hyperparameters in real time.",
+          "Always-on hardware with no queue between experiments. The time from idea to running job is however long the code takes to write.",
       },
       {
         title: "RLHF & post-training ready",
@@ -134,7 +134,7 @@ export const solutions: Solution[] = [
     ],
     stats: [
       { value: "8–512+", label: "GPU footprints" },
-      { value: "No queue", label: "Between experiments" },
+      { value: "0", label: "Queue between runs" },
       { value: "Fixed", label: "Monthly pricing" },
     ],
     relatedGpus: ["NVIDIA H200", "NVIDIA H100"],
@@ -148,13 +148,13 @@ export const solutions: Solution[] = [
     eyebrow: "Industry",
     headline: "Private AI compute for clinical environments",
     subhead:
-      "HIPAA-compliant, single-tenant GPU infrastructure purpose-built for medical imaging, drug discovery, and clinical decision support — backed by the NVIDIA Clara stack.",
+      "HIPAA-compliant, single-tenant GPU infrastructure for medical imaging, drug discovery, and clinical decision support — backed by the NVIDIA Clara stack and built so your compliance team can prove it.",
     image: "/assets/healthcare.jpg",
     capabilities: [
       {
         title: "HIPAA-compliant by design",
         description:
-          "Single-tenant deployments with encryption at rest and in transit. Business Associate Agreements available before you sign.",
+          "Single-tenant deployments with encryption at rest and in transit. The BAA is signed before you finish scoping, not after legal review round three.",
       },
       {
         title: "Optimized for NVIDIA Clara",
@@ -186,9 +186,9 @@ export const solutions: Solution[] = [
     name: "Startups & Research",
     menuDescription: "Graduate from on-demand into reserved private clusters",
     eyebrow: "Industry",
-    headline: "Compute that grows with your company",
+    headline: "From your first GPU to your first cluster",
     subhead:
-      "Start fast on on-demand GPUs, then graduate into reserved private clusters as your workloads grow — with pricing and support built for teams without a dedicated infra org.",
+      "Start on on-demand GPUs in hours, then graduate into a reserved private cluster as your workloads grow — with pricing and support built for teams that don't have an infra org yet.",
     image: "/assets/rack-tall.png",
     capabilities: [
       {
@@ -204,12 +204,12 @@ export const solutions: Solution[] = [
       {
         title: "No infra team required",
         description:
-          "We handle provisioning, networking, and operations so your engineers can focus on the model, not the metal.",
+          "We handle provisioning, networking, and operations so your engineers can work on the model, not the metal.",
       },
     ],
     stats: [
       { value: "Hours", label: "To first GPU" },
-      { value: "Flexible", label: "On-demand → reserved" },
+      { value: "0", label: "Infra hires needed" },
       { value: "Hands-on", label: "Solutions support" },
     ],
     relatedGpus: ["NVIDIA H100", "NVIDIA H200"],
@@ -221,9 +221,9 @@ export const solutions: Solution[] = [
     name: "Enterprise",
     menuDescription: "Private, compliant AI infrastructure for large orgs",
     eyebrow: "Industry",
-    headline: "Enterprise-grade private AI infrastructure",
+    headline: "AI infrastructure your security team will sign off on",
     subhead:
-      "Dedicated, isolated GPU infrastructure with the security posture, predictable economics, and dedicated support that enterprise procurement and security teams require.",
+      "Isolated GPU infrastructure with the security posture, predictable economics, and direct support that procurement and security reviews actually approve — the first time through.",
     image: "/assets/server-dgx.png",
     capabilities: [
       {
@@ -244,7 +244,7 @@ export const solutions: Solution[] = [
       {
         title: "Dedicated solutions engineer",
         description:
-          "A named engineer who understands your workloads — direct access, not a ticket queue.",
+          "A named engineer who knows your deployment — a phone that rings, not a portal that queues.",
       },
     ],
     stats: [

@@ -24,14 +24,15 @@ export default function CTA() {
             </h2>
             <p className="measure mt-8 text-lg leading-relaxed text-fg-dim">
               Tell us what you&apos;re building. We&apos;ll scope the cluster, quote a
-              fixed monthly number, and have it racked before your next training
-              run needs it.
+              fixed monthly number, and commit to a commissioning date in
+              writing. Dedicated capacity takes a quarter or more to stand up —
+              the difference with us is you&apos;ll know exactly when yours arrives.
             </p>
             <ul className="mt-10 space-y-3 border-t border-[color:var(--rule)] pt-6">
               {[
-                "Custom-scoped cluster proposal",
+                "A cluster proposal scoped to your workload",
                 "One fixed monthly price — no egress, no metering",
-                "A named solutions engineer from day one",
+                "A direct line to the engineers who racked it",
               ].map((item) => (
                 <li key={item} className="flex items-baseline gap-3 text-sm text-fg-dim">
                   <span className="mono text-gold">→</span>

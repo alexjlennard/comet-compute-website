@@ -46,8 +46,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-fg-dim">
-              Dedicated GPU infrastructure for teams building AI. The
-              anti-hyperscaler that actually delivers.
+              Dedicated GPU infrastructure for teams who&apos;d rather own the
+              machine than rent a slice of one.
             </p>
           </div>
 

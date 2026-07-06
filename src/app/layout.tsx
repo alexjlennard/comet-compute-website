@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,9 +24,19 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Comet Compute — Dedicated GPU infrastructure for AI",
+  title: {
+    default: "Comet Compute — Dedicated GPU infrastructure for AI",
+    template: "%s — Comet Compute",
+  },
   description:
-    "Single-tenant NVIDIA clusters. No noisy neighbors, no metered surprises, no procurement theater. Managed Kubernetes and Slurm, tuned before you log in.",
+    "Single-tenant NVIDIA clusters, delivered as a managed Kubernetes and Slurm platform or straight bare metal with root. No shared silicon, no metered surprises.",
+  openGraph: {
+    siteName: "Comet Compute",
+    type: "website",
+    title: "Comet Compute — Dedicated GPU infrastructure for AI",
+    description:
+      "Single-tenant NVIDIA clusters, delivered as a managed Kubernetes and Slurm platform or straight bare metal with root. No shared silicon, no metered surprises.",
+  },
   icons: {
     icon: "/assets/comet-logo.png",
     apple: "/assets/comet-logo.png",
@@ -42,7 +53,12 @@ export default function RootLayout({
       lang="en"
       className={`${serif.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Script id="reb2b" strategy="afterInteractive">
+          {`!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("QO92DHLEKRN7");`}
+        </Script>
+      </body>
     </html>
   );
 }

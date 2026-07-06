@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import { solutionsByGroup } from "@/lib/solutions";
 
 export const metadata: Metadata = {
-  title: "Solutions | Comet Compute",
+  title: "Solutions",
   description:
     "Dedicated GPU infrastructure tailored to your workload — from model training and inference to healthcare, enterprise, and startups.",
 };

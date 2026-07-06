@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader";
 export default function Comparison() {
   const rows = [
     { feature: "Tenancy", comet: "Fully dedicated hardware", others: "Shared, multi-tenant" },
-    { feature: "Orchestration", comet: "Managed K8s & Slurm", others: "DIY on bare metal" },
+    { feature: "Deployment", comet: "Managed stack or bare metal — your call", others: "One model fits all" },
     { feature: "Pricing", comet: "One fixed monthly number", others: "Metered billing maze" },
     { feature: "Capacity", comet: "Guaranteed, reserved", others: "Waitlists & spot evictions" },
     { feature: "Support", comet: "A named engineer", others: "A ticket queue" },
@@ -24,7 +24,7 @@ export default function Comparison() {
               <span className="serif-italic text-gold">hyperscaler.</span>
             </>
           }
-          lede="Teams building AI deserve better than fighting for shared resources, decoding a billing console, and waiting on a queue."
+          lede="You shouldn't have to fight a neighbor for bandwidth, decode a billing console, or hold your place in a capacity queue just to train a model."
         />
 
         <Reveal className="mt-20 border border-[color:var(--rule-strong)]">

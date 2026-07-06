@@ -7,17 +7,18 @@ export default function Infrastructure() {
     name: "GB300 NVL72",
     tag: "FLAGSHIP · BLACKWELL ULTRA",
     description:
-      "Rack-scale system for the largest training and inference runs. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single coherent accelerator.",
+      "Rack-scale system for the largest training and inference runs. 72 Blackwell Ultra GPUs unified over NVLink 5 into a single coherent accelerator — we commission them up to 64 racks at a time.",
     image: "/assets/cluster-nvl72.png",
     specs: [
       { k: "GPUs", v: "72 × Blackwell Ultra" },
       { k: "Memory", v: "up to 21 TB" },
-      { k: "Interconnect", v: "NVLink 5" },
+      { k: "Fabric", v: "NVLink 5 + XDR IB" },
       { k: "vs GB200", v: "1.5× throughput" },
     ],
   };
 
   const lineup = [
+    { name: "Vera Rubin NVL144", arch: "Rubin", memory: "288 GB HBM4", fabric: "NVLink 6", perf: "reserving" },
     { name: "GB200 NVL72", arch: "Grace Blackwell", memory: "up to 13.5 TB", fabric: "NVLink 5", perf: "1.4 EFLOPS" },
     { name: "HGX B300", arch: "Blackwell Ultra", memory: "2.3 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
     { name: "HGX B200", arch: "Blackwell", memory: "1.4 TB HBM3e", fabric: "NVLink", perf: "8-GPU node" },
@@ -38,7 +39,7 @@ export default function Infrastructure() {
               ready to <span className="serif-italic text-gold">reserve.</span>
             </>
           }
-          lede="From Blackwell Ultra rack-scale systems to proven Hopper nodes — racked in purpose-built facilities with enterprise networking."
+          lede="Blackwell Ultra rack-scale systems and proven Hopper nodes, pre-validated to NVIDIA's NCP reference architecture — with Vera Rubin deployments already in flight."
         />
 
         {/* Flagship — asymmetric split, image bleeds left */}

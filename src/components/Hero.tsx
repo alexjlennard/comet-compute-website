@@ -28,16 +28,15 @@ export default function Hero() {
             <h1 className="serif mt-10 text-[3.5rem] leading-[0.9] tracking-[-0.02em] sm:text-[5.5rem] lg:text-[7rem]">
               Your GPUs.
               <br />
-              Nobody
+              Nobody else
               <br />
-              else&apos;s <span className="serif-italic text-gold">on them.</span>
+              <span className="serif-italic text-gold">on them.</span>
             </h1>
 
             <p className="measure mt-10 text-xl leading-relaxed text-fg-dim text-pretty">
-              Single-tenant NVIDIA clusters — bare metal that&apos;s yours alone,
-              with managed Kubernetes and Slurm tuned before you log in. No
-              shared silicon. No metered surprises. No six-month procurement
-              theater.
+              Single-tenant NVIDIA clusters — delivered as a managed Kubernetes
+              and Slurm platform, or straight bare metal with root. No shared
+              silicon. No metered surprises. No procurement theater.
             </p>
 
             <div className="mt-12 flex flex-col gap-x-8 gap-y-5 sm:flex-row sm:items-center">
@@ -78,8 +77,8 @@ export default function Hero() {
         <div className="mx-auto grid max-w-[88rem] grid-cols-2 px-6 lg:grid-cols-4 lg:px-10">
           {[
             { k: "Tenancy", v: "100%", note: "dedicated hardware" },
-            { k: "Fabric", v: "400G", note: "InfiniBand + NVLink" },
-            { k: "Uptime", v: "99.9%", note: "contractual SLA" },
+            { k: "Fabric", v: "800G", note: "XDR InfiniBand · NVLink" },
+            { k: "Spares", v: "N+1", note: "hot standby nodes" },
             { k: "Support", v: "1:1", note: "named engineer" },
           ].map((s, i) => (
             <div

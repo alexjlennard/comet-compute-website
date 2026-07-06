@@ -27,7 +27,7 @@ export default function ManagedPlatform() {
                   on <span className="serif-italic text-gold">day one.</span>
                 </>
               }
-              lede="Anyone can drop-ship you bare metal. We hand you a running platform — managed Kubernetes and Slurm, a pre-tuned ML stack, observability — live before you log in."
+              lede="Take the keys however you want them: a running platform — managed Kubernetes and Slurm, pre-tuned ML stack, observability — or raw bare metal with root on every node."
             />
 
             {/* Terminal — what day one actually looks like */}
@@ -54,7 +54,7 @@ export default function ManagedPlatform() {
                   <span className="text-fg-faint">$ </span>
                   <span className="text-fg">srun --gpus=16 python train.py</span>
                   {"\n"}
-                  <span className="text-fg-dim">nccl: all-reduce @ 392 Gb/s · 0 driver setup</span>
+                  <span className="text-fg-dim">nccl: all-reduce @ 780 Gb/s · 0 driver setup</span>
                   <span className="caret align-text-bottom" />
                 </code>
               </pre>
@@ -98,11 +98,26 @@ export default function ManagedPlatform() {
                 })}
               </ul>
             </div>
-            <p className="mt-5 text-sm leading-relaxed text-fg-dim">
-              You bring the workload. We run every layer beneath it — or hand you
-              root on the bare metal if you&apos;d rather run your own stack. Your
-              call, not ours.
-            </p>
+            <div className="mt-5 grid gap-px border border-[color:var(--rule-strong)] bg-[color:var(--rule)] sm:grid-cols-2">
+              <div className="bg-ink p-5">
+                <span className="mono text-[11px] uppercase tracking-[0.14em] text-gold">
+                  01 · Full stack
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-fg-dim">
+                  You ship a workload; we run every layer beneath it. Kubernetes,
+                  Slurm, drivers, observability — managed, patched, and tuned.
+                </p>
+              </div>
+              <div className="bg-ink p-5">
+                <span className="mono text-[11px] uppercase tracking-[0.14em] text-gold">
+                  02 · Bare metal
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-fg-dim">
+                  Root on every node, your stack on our fabric. We keep the
+                  hardware, network, and firmware healthy — the rest is yours.
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>

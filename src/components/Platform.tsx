@@ -15,13 +15,13 @@ const features = [
   },
   {
     n: "03",
-    title: "400G interconnect",
-    body: "InfiniBand and NVLink fabric for multi-node training at full throughput — gradients move at line rate.",
+    title: "800G interconnect",
+    body: "Non-blocking Quantum-3 XDR InfiniBand at up to 800 Gb/s per GPU, plus NVLink inside the node — gradients move at line rate.",
   },
   {
     n: "04",
-    title: "Yours in days, not quarters",
-    body: "We handle provisioning, networking, and bring-up. Skip the procurement cycle entirely — you train this month, not next year.",
+    title: "A date, not a waitlist",
+    body: "Real dedicated capacity takes a quarter or more to allocate and commission — anyone promising next week is reselling spare racks. We commit to a delivery date up front, in writing, and hit it.",
   },
   {
     n: "05",
@@ -44,12 +44,12 @@ export default function Platform() {
           kicker="The platform"
           title={
             <>
-              Infrastructure that
+              Own the machine,
               <br />
-              doesn&apos;t <span className="serif-italic text-gold">compromise.</span>
+              not a <span className="serif-italic text-gold">slice</span> of it.
             </>
           }
-          lede="Purpose-built GPU clusters for AI training and inference. Every layer engineered, not assembled from whatever the hyperscaler had spare."
+          lede="GPU clusters engineered end to end for training and inference — not assembled from whatever the hyperscaler had left over."
         />
 
         {/* Ledger grid — rules instead of cards, asymmetric first row */}

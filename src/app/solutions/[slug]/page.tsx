@@ -19,9 +19,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const solution = getSolution(slug);
-  if (!solution) return { title: "Solution not found | Comet Compute" };
+  if (!solution) return { title: "Solution not found" };
   return {
-    title: `${solution.name} | Comet Compute`,
+    title: solution.name,
     description: solution.seo,
   };
 }
@@ -115,7 +115,7 @@ export default async function SolutionPage({
               <span className="label">Capabilities</span>
             </div>
             <h2 className="serif mt-8 max-w-2xl text-balance text-4xl sm:text-5xl">
-              Built for the way you work
+              Built in, not bolted on
             </h2>
           </Reveal>
 
