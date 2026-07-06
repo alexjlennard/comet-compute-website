@@ -47,9 +47,9 @@ export default function Navbar() {
           }}
         >
           <Image
-            src="/assets/comet-compute-logo.svg"
+            src="/assets/comet-compute-logo-white.png"
             alt="Comet Compute"
-            width={140}
+            width={147}
             height={36}
             priority
             className="h-8 w-auto"

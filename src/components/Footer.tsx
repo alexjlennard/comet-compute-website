@@ -38,10 +38,10 @@ export default function Footer() {
           <div className="lg:pr-10">
             <Link href="/" className="flex items-center" aria-label="Comet Compute home">
               <Image
-                src="/assets/comet-compute-logo.svg"
+                src="/assets/comet-compute-logo-white.png"
                 alt="Comet Compute"
-                width={150}
-                height={38}
+                width={147}
+                height={36}
                 className="h-8 w-auto"
               />
             </Link>

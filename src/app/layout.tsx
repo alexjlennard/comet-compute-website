@@ -38,10 +38,6 @@ export const metadata: Metadata = {
     description:
       "Single-tenant NVIDIA clusters, delivered as a managed Kubernetes and Slurm platform or straight bare metal with root. No shared silicon, no metered surprises.",
   },
-  icons: {
-    icon: "/assets/comet-logo.png",
-    apple: "/assets/comet-logo.png",
-  },
 };
 
 export default function RootLayout({

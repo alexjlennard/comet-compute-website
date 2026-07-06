@@ -87,9 +87,9 @@ export default function CTA() {
                     >
                       <option value="" disabled>Select hardware</option>
                       <option>NVIDIA HGX B300</option>
-                      <option>NVIDIA GB300 NVL72</option>
-                      <option>NVIDIA Vera Rubin NVL144</option>
-                      <option>NVIDIA GB200 NVL72</option>
+                      <option>NVIDIA GB300</option>
+                      <option>NVIDIA Vera Rubin</option>
+                      <option>NVIDIA GB200</option>
                       <option>NVIDIA HGX B200</option>
                       <option>NVIDIA H200</option>
                       <option>NVIDIA H100</option>
