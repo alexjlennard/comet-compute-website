@@ -45,8 +45,8 @@ const COL = {
   ruleStrong: "rgba(236,233,227,0.18)",
   faint: "#625f58",
   dim: "#9b978d",
-  gold: "#e3a72c",
-  bright: "#f4c560",
+  gold: "#d4af37",
+  bright: "#e9cf6b",
 };
 
 const gauss = (x: number, s: number) => Math.exp(-(x * x) / (2 * s * s));

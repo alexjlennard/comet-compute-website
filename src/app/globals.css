@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 /*
-  Comet Compute — "Technical editorial, set in the dark"
+  Comet Compute - "Technical editorial, set in the dark"
   ----------------------------------------------------------------
-  Display:  Instrument Serif   — headlines only, large, tight
-  Body/UI:  Hanken Grotesk     — humanist grotesque
-  Data:     JetBrains Mono     — labels, specs, terminal
+  Display:  Instrument Serif   - headlines only, large, tight
+  Body/UI:  Hanken Grotesk     - humanist grotesque
+  Data:     JetBrains Mono     - labels, specs, terminal
 
   Gold is an INK, not a fill. It lives in type, hairlines, and the
-  single primary action — never as a 10%-opacity tinted box.
+  single primary action - never as a 10%-opacity tinted box.
 */
 
 :root {
-  --ink: #08070a;          /* page — warm near-black with a cool edge */
+  --ink: #08070a;          /* page - warm near-black with a cool edge */
   --ink-raised: #0e0d11;   /* raised panel */
   --ink-line: #1b1a1f;     /* solid hairline */
   --paper: #f3efe6;        /* inverted "paper" section */
@@ -22,8 +22,8 @@
   --fg-dim: #9b978d;       /* secondary text */
   --fg-faint: #625f58;     /* tertiary / captions */
 
-  --gold: #e3a72c;         /* the one accent — used as ink */
-  --gold-bright: #f4c560;  /* hover / emphasis */
+  --gold: #d4af37;         /* metallic GPU gold - used as ink */
+  --gold-bright: #e9cf6b;  /* hover / emphasis */
   --rule: rgba(236, 233, 227, 0.1);
   --rule-strong: rgba(236, 233, 227, 0.16);
 }
@@ -46,7 +46,7 @@
 
 html {
   scroll-behavior: smooth;
-  /* body-level overflow-x doesn't stop iOS Safari horizontal panning —
+  /* body-level overflow-x doesn't stop iOS Safari horizontal panning -
      the root element is the scroller, so clip here */
   overflow-x: hidden;
   overflow-x: clip;
@@ -81,7 +81,7 @@ body {
   font-style: italic;
 }
 
-/* Mono label: "01 / INFRASTRUCTURE" — the structural voice of the site. */
+/* Mono label: "01 / INFRASTRUCTURE" - the structural voice of the site. */
 .label {
   font-family: var(--font-mono), monospace;
   font-size: 0.7rem;
@@ -99,7 +99,7 @@ body {
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
 
-/* Solid hairline rules — no gradients. */
+/* Solid hairline rules - no gradients. */
 .rule-t { border-top: 1px solid var(--rule); }
 .rule-b { border-bottom: 1px solid var(--rule); }
 
@@ -157,7 +157,7 @@ body {
 }
 
 /* ---------- Texture ---------- */
-/* Fine grain — kept very low. Adds soul without the corporate-flat look. */
+/* Fine grain - kept very low. Adds soul without the corporate-flat look. */
 body::after {
   content: "";
   position: fixed;
@@ -169,7 +169,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Engineering blueprint grid — used sparingly, masked, never as a glow. */
+/* Engineering blueprint grid - used sparingly, masked, never as a glow. */
 .blueprint {
   background-image:
     linear-gradient(var(--rule) 1px, transparent 1px),
@@ -177,7 +177,21 @@ body::after {
   background-size: 64px 64px;
 }
 
-/* Link underline that grows from the left — a small delightful detail. */
+/* ---------- Mobile readability ---------- */
+/* Larger minimums for small type on phones. Unlayered rules intentionally
+   beat Tailwind's layered utilities. 16px inputs also stop iOS focus-zoom. */
+@media (max-width: 767px) {
+  .label { font-size: 0.8rem; }
+  .text-xs { font-size: 0.8125rem; line-height: 1.45; }
+  .text-sm { font-size: 0.9375rem; line-height: 1.5; }
+  .text-\[10px\],
+  .text-\[11px\] { font-size: 0.75rem; }
+  .text-\[13px\] { font-size: 0.875rem; }
+  .text-\[15px\] { font-size: 1rem; }
+  input, select, textarea { font-size: 1rem; }
+}
+
+/* Link underline that grows from the left - a small delightful detail. */
 .link-grow {
   position: relative;
 }
